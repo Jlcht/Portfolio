@@ -1,6 +1,8 @@
 import React from 'react';
 import './Header.css';
 import logoGN from '../assets/images/logo192.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons'; // import the specific icon
 
 const Header = () => (
     <header className="header">
@@ -13,7 +15,17 @@ const Header = () => (
                 <li><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact" className="cta">Contact</a></li>
+                <li>
+                    <a
+                        href="https://www.linkedin.com/in/jean-luc-chumont"
+                        className="cta"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <FontAwesomeIcon icon={faLinkedin} className="cta-icon" />
+                        LinkedIn
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
