@@ -1,19 +1,13 @@
 // src/Views/HomePage.js
 import React, { useState } from 'react';
 import './HomePage.css';
-import logoGN from '../assets/images/logo192.png';
 import Header from './Header.js';
 
 
 const HomePage = () => {
-    const [isBlue, setIsBlue] = useState(false);
-
-    const toggleColor = () => {
-        setIsBlue(!isBlue);
-    };
 
     return (
-        <div className="cafe-homepage">
+        <div className="homepage">
             <Header/>
         </div>
     );
