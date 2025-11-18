@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background: linear-gradient(0deg,#a8ff8a,#0ba34a);
+    background: linear-gradient(0deg,#f5f5f5,#e0e0e0); /* primary grey fade */
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
@@ -61,7 +61,7 @@
     padding: 10px 20px;
     border: none;
     border-radius: 6px;
-    background: linear-gradient(135deg,#007bff,#010c1a);
+    background: linear-gradient(135deg,#007bff,#010c1a); /* secondary blue fade */
     color: white;
     cursor: pointer;
     transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
@@ -71,7 +71,7 @@
 .nav-btn:hover {
     transform: scale(1.1);
     background: linear-gradient(135deg,#753ef5,#5260ff);
-    box-shadow: 0 0 18px rgba(0,255,170,0.55),0 0 28px rgba(0,140,255,0.45);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.55),0 0 28px rgba(0,140,255,0.45);
 }
 
 .cta-icon {
@@ -113,7 +113,7 @@
 .nav-btn:hover {
     transform: scale(1.1);
     background: linear-gradient(135deg,#753ef5,#5260ff);
-    box-shadow: 0 0 18px rgba(0,255,170,0.55),0 0 28px rgba(0,140,255,0.45);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.55),0 0 28px rgba(0,140,255,0.45);
 }
 
 .cta-icon {
