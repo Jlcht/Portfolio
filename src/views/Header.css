@@ -3,60 +3,167 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background-color: #ffffff;
+    background: linear-gradient(0deg,#a8ff8a,#0ba34a);
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
+    flex-wrap: wrap;
 }
 
 .header-left {
     display: flex;
     align-items: center;
+    flex: 1 1 auto;
 }
 
 .header-logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 15px;
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
 }
 
 .header-title {
     font-size: 1.8rem;
     font-weight: bold;
     color: #333;
+    white-space: nowrap;
 }
 
-.header-nav ul {
+.header-nav {
+    padding-right: 30px;
+    flex: 1 1 auto;
     display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    justify-content: flex-end;
 }
 
-.header-nav li {
-    margin-left: 25px;
-}
-
-.header-nav a {
+/* Regular nav links */
+.nav-link {
     text-decoration: none;
     font-size: 1rem;
     color: #555;
-    transition: color 0.3s ease;
+    transition: transform 0.25s ease, color 0.25s ease;
+    display: inline-block;
+    padding: 6px 10px;
 }
 
-.header-nav a:hover {
+.nav-link:hover {
     color: #000;
+    transform: scale(1.05);
 }
 
-.header-nav .cta {
-    padding: 8px 16px;
-    background-color: #007bff;
+/* Buttons (About + LinkedIn) */
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(135deg,#007bff,#010c1a);
     color: white;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none; /* for LinkedIn link */
 }
 
-.header-nav .cta:hover {
-    background-color: #0056b3;
+.nav-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg,#753ef5,#5260ff);
+    box-shadow: 0 0 18px rgba(0,255,170,0.55),0 0 28px rgba(0,140,255,0.45);
+}
+
+.cta-icon {
+    font-size: 1.1rem;
+}
+
+
+.header-nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.header-nav li {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* General nav button styling */
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(135deg,#007bff,#010c1a);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none; /* for links like LinkedIn */
+}
+
+.nav-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg,#753ef5,#5260ff);
+    box-shadow: 0 0 18px rgba(0,255,170,0.55),0 0 28px rgba(0,140,255,0.45);
+}
+
+.cta-icon {
+    font-size: 1.1rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 992px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+
+    .header-left {
+        margin-bottom: 10px;
+    }
+
+    .header-title {
+        font-size: 1.5rem;
+    }
+
+    .header-nav {
+        width: 100%;
+        justify-content: space-between;
+        padding-right: 0;
+    }
+
+    .header-nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .header-nav li {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .header-title {
+        font-size: 1.2rem;
+    }
+
+    .nav-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
 }
