@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import VideoModal from '../components/VideoModal';
 import Banner from '../components/Banner';
+import Gallery from '../components/Gallery';
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -68,6 +69,9 @@ const Header = () => {
                     videoUrl={videoUrl}
                 />
             </header>
+
+            {/* Gallery section after header */}
+            <Gallery />
         </>
     );
 };
