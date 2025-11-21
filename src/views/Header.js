@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import VideoModal from '../components/VideoModal';
 import Banner from '../components/Banner';
-import Gallery from '../components/Gallery';
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const videoUrl = 'https://www.youtube.com/embed/-tnPCI5RdNA';
+    const resumePdfUrl = '/CV_Jean-Luc_CHUMONT_EN.pdf'; // Place PDF in public folder
 
     const handleClick = (action) => {
         switch (action.type) {
@@ -40,7 +40,16 @@ const Header = () => {
                 <nav className="header-nav">
                     <ul>
                         <li><a href="#features" className="nav-link">Features</a></li>
-                        <li><a href="#pricing" className="nav-link">Pricing</a></li>
+                        <li>
+                            <a 
+                                href={resumePdfUrl} 
+                                className="nav-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Resume
+                            </a>
+                        </li>
                         <li>
                             <button
                                 className="nav-btn"
@@ -69,9 +78,6 @@ const Header = () => {
                     videoUrl={videoUrl}
                 />
             </header>
-
-            {/* Gallery section after header */}
-            <Gallery />
         </>
     );
 };
