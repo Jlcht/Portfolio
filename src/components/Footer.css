@@ -1,0 +1,126 @@
+.footer {
+  background: linear-gradient(0deg, #f5f5f5, #e0e0e0); /* primary grey fade */
+  padding: 40px 20px 20px;
+  margin-top: 60px;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 30px 0;
+  max-width: 900px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-title {
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 16px 0;
+  text-transform: capitalize;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.footer-link {
+  font-size: 0.875rem;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+  display: inline-block;
+}
+
+.footer-link:hover {
+  color: #007bff;
+  transform: translateX(3px);
+}
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 20px 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+  margin: 0;
+}
+
+/* Tablet Layout */
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 800px;
+  }
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 16px 16px;
+    margin-top: 40px;
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 20px 0;
+  }
+
+  .footer-title {
+    font-size: 0.8rem;
+  }
+
+  .footer-link {
+    font-size: 0.8rem;
+  }
+
+  .footer-logo {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 576px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .footer-column {
+    text-align: center;
+  }
+
+  .footer-links {
+    align-items: center;
+  }
+}
