@@ -1,6 +1,5 @@
 import React from 'react';
 import './Footer.css';
-import logoGN from '../assets/images/logo192.png';
 
 const Footer = () => {
   const resumePdfUrl = '/CV_Jean-Luc_CHUMONT_EN.pdf'; // Place PDF in public folder
@@ -37,10 +36,6 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="footer-logo-section">
-          <img src={logoGN} alt="Logo" className="footer-logo" />
-        </div>
-        
         <div className="footer-content">
           {footerSections.map((section, index) => (
             <div key={index} className="footer-column">
