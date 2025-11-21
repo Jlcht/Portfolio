@@ -3,6 +3,8 @@ import './Gallery.css';
 import codeImage from '../assets/images/code_illu.jpg';
 import htmlImage from '../assets/images/html_illu.jpg';
 import jsImage from '../assets/images/js_illu.jpg';
+import utbmLogo from '../assets/images/utbm_logo.jpg';
+
 
 const Gallery = () => {
   const [hoveredCard, setHoveredCard] = React.useState(null);
@@ -10,36 +12,41 @@ const Gallery = () => {
   const cards = [
     {
       id: 1,
-      category: 'DEVELOPMENT',
-      title: 'Master the art of clean code',
+      category: 'PROFESSIONAL EXPERIENCE',
+      title: 'Professional Journey',
       image: codeImage,
-      alt: 'Code illustration'
+      alt: 'Code illustration',
+      display: true
     },
     {
       id: 2,
-      category: 'WEB DESIGN',
-      title: 'Build responsive layouts with modern HTML',
-      image: htmlImage,
-      alt: 'HTML illustration'
+      category: 'EDUCATION',
+      title: 'Academic Background',
+      image: utbmLogo,
+      alt: 'UTBM illustration',
+      display: true
     },
     {
       id: 3,
-      category: 'JAVASCRIPT',
-      title: 'Create dynamic experiences with JS',
+      category: 'INTEREST',
+      title: 'Passions & Hobbies',
       image: jsImage,
-      alt: 'JavaScript illustration'
+      alt: 'JavaScript illustration',
+      display: true
     }
   ];
+
+  const visibleCards = cards.filter((card) => card.display);
 
   return (
     <section className="gallery-section">
       <div className="gallery-header">
         <h2 className="gallery-title">
-          Remises et <span className="highlight">offres.</span> Promotions exclusives, programmes spéciaux, et plus.
+          Discover me in <span className="highlight">3 differents ways.</span> 
         </h2>
       </div>
       <div className="gallery-container">
-        {cards.map((card) => (
+        {visibleCards.map((card) => (
           <div 
             key={card.id} 
             className={`gallery-card ${hoveredCard === card.id ? 'hovered' : ''}`}

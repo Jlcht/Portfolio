@@ -1,5 +1,5 @@
 .gallery-section {
-  padding: 60px 20px;
+  padding: 40px 20px;
   background: linear-gradient(0deg, #f5f5f5, #e0e0e0); /* primary grey fade */
   max-width: 1400px;
   margin: 40px auto 0; /* Added spacing from header */
@@ -34,6 +34,20 @@
   gap: 24px;
 }
 
+/* Center cards when only 2 are visible */
+.gallery-container:has(.gallery-card:nth-child(2):last-child) {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Center card when only 1 is visible */
+.gallery-container:has(.gallery-card:first-child:last-child) {
+  grid-template-columns: 1fr;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
 .gallery-card {
   background: linear-gradient(135deg, #ffffff, #f8f8f8);
   border-radius: 18px;
@@ -55,7 +69,7 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
-  min-height: 450px;
+  min-height: 400px;
 }
 
 .card-category {
@@ -103,12 +117,12 @@
   height: 200px;
   object-fit: contain;
   transition: transform 0.3s ease;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  /*filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));*/
 }
 
 .gallery-card.hovered .card-image {
   transform: scale(1.1);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  /*filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));*/
 }
 
 /* Tablet Layout */
