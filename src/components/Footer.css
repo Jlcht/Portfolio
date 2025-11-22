@@ -101,6 +101,21 @@
   border-bottom-color: #999;
 }
 
+/* Connect Links Inline */
+.footer-connect-inline {
+  margin-top: 20px;
+}
+
+.connect-links-inline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
 /* Profile Photo Section */
 .footer-profile {
   display: flex;
@@ -119,33 +134,6 @@
   border: 3px solid #d4a574;
   transform: rotate(2deg);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* Connect Section */
-.footer-connect {
-  text-align: center;
-  padding: 40px 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
-}
-
-.connect-title {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #333;
-  margin: 0 0 20px 0;
-  text-transform: capitalize;
-}
-
-.connect-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
 }
 
 .connect-link {
@@ -200,6 +188,11 @@
     height: 160px;
   }
 
+  .song-info {
+  display: flex;
+  flex-direction: column;
+  }
+
   .profile-photo {
     width: 180px;
     height: 220px;
@@ -226,13 +219,18 @@
     height: 140px;
   }
 
+  .song-info {
+  display: flex;
+  flex-direction: column;
+}
+
   .profile-photo {
     width: 150px;
     height: 190px;
   }
 
-  .connect-links {
-    gap: 25px;
+  .connect-links-inline {
+    gap: 20px;
   }
 }
 
@@ -252,7 +250,7 @@
     height: 170px;
   }
 
-  .connect-links {
+  .connect-links-inline {
     flex-direction: column;
     gap: 15px;
   }

@@ -39,6 +39,25 @@ const Footer = () => {
             >
               Style inspiration
             </a>
+            
+            {/* Connect Links */}
+            <div className="footer-connect-inline">
+              <h3 className="connect-title">Connect</h3>
+              <ul className="connect-links-inline">
+                {connectLinks.map((link, index) => (
+                  <li key={index}>
+                    <a 
+                      href={link.url} 
+                      className="connect-link"
+                      target={link.url.startsWith('http') ? '_blank' : '_self'}
+                      rel={link.url.startsWith('http') ? 'noopener noreferrer' : ''}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Profile Photo Section */}
@@ -47,25 +66,6 @@ const Footer = () => {
               <img src={profilePhoto} alt="Jean-Luc Chumont" className="profile-photo" />
             </div>
           </div>
-        </div>
-
-        {/* Connect Links */}
-        <div className="footer-connect">
-          <h3 className="connect-title">Connect</h3>
-          <ul className="connect-links">
-            {connectLinks.map((link, index) => (
-              <li key={index}>
-                <a 
-                  href={link.url} 
-                  className="connect-link"
-                  target={link.url.startsWith('http') ? '_blank' : '_self'}
-                  rel={link.url.startsWith('http') ? 'noopener noreferrer' : ''}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
 
         {/* Bottom Section */}
