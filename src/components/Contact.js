@@ -73,7 +73,7 @@ const Contact = ({ isOpen, onClose }) => {
           <FontAwesomeIcon icon={faTimes} />
         </button>
 
-        <h2 className="contact-title">Get in Touch</h2>
+        <h2 className="contact-title">Get in Touch !</h2>
 
         <div className="contact-content">
           <div className="contact-info">

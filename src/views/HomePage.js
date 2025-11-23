@@ -3,7 +3,6 @@ import './HomePage.css';
 import Header from './Header.js';
 import Introduction from '../components/Introduction';
 import Gallery from '../components/Gallery';
-import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import FloatingContactButton from '../components/FloatingContactButton';
 
