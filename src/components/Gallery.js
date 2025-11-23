@@ -1,55 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Gallery.css';
 import codeImage from '../assets/images/code_illu.jpg';
 import htmlImage from '../assets/images/html_illu.jpg';
 import jsImage from '../assets/images/js_illu.jpg';
 import utbmLogo from '../assets/images/utbm_logo.jpg';
 
-
 const Gallery = () => {
-  const [hoveredCard, setHoveredCard] = React.useState(null);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const cardRefs = useRef([]);
+  const [cardIsVisible, setCardIsVisible] = useState([]);
 
   const cards = [
-    {
-      id: 1,
-      category: 'PROFESSIONAL EXPERIENCE',
-      title: 'Professional Journey',
-      image: codeImage,
-      alt: 'Code illustration',
-      display: true
-    },
-    {
-      id: 2,
-      category: 'EDUCATION',
-      title: 'Academic Background',
-      image: utbmLogo,
-      alt: 'UTBM illustration',
-      display: true
-    },
-    {
-      id: 3,
-      category: 'INTEREST',
-      title: 'Passions & Hobbies',
-      image: jsImage,
-      alt: 'JavaScript illustration',
-      display: true
-    }
+    { id: 1, category: 'PROFESSIONAL EXPERIENCE', title: 'Professional Journey', image: codeImage, alt: 'Code illustration' },
+    { id: 2, category: 'EDUCATION', title: 'Academic Background', image: utbmLogo, alt: 'UTBM illustration' },
+    { id: 3, category: 'INTEREST', title: 'Passions & Hobbies', image: jsImage, alt: 'JavaScript illustration' },
   ];
 
-  const visibleCards = cards.filter((card) => card.display);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const index = cardRefs.current.indexOf(entry.target);
+        if (index !== -1) {
+          setCardIsVisible(prev => {
+            const newState = [...prev];
+            newState[index] = entry.isIntersecting;
+            return newState;
+          });
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cardRefs.current.forEach(card => { if(card) observer.observe(card); });
+    return () => cardRefs.current.forEach(card => { if(card) observer.unobserve(card); });
+  }, []);
 
   return (
     <section className="gallery-section">
       <div className="gallery-header">
         <h2 className="gallery-title">
-          Discover me in <span className="highlight">3 differents ways.</span> 
+          <span className="highlight">Gallery</span>
         </h2>
       </div>
       <div className="gallery-container">
-        {visibleCards.map((card) => (
-          <div 
-            key={card.id} 
-            className={`gallery-card ${hoveredCard === card.id ? 'hovered' : ''}`}
+        {cards.map((card, index) => (
+          <div
+            key={card.id}
+            ref={el => cardRefs.current[index] = el}
+            className={`gallery-card ${cardIsVisible[index] ? 'visible' : ''} ${hoveredCard === card.id ? 'hovered' : ''}`}
+            style={{ animationDelay: `${index * 0.3}s` }}
             onMouseEnter={() => setHoveredCard(card.id)}
             onMouseLeave={() => setHoveredCard(null)}
           >
@@ -57,11 +55,7 @@ const Gallery = () => {
               <span className="card-category">{card.category}</span>
               <h3 className="card-title">{card.title}</h3>
               <div className="card-image-wrapper">
-                <img 
-                  src={card.image}
-                  alt={card.alt}
-                  className="card-image"
-                />
+                <img src={card.image} alt={card.alt} className="card-image" />
               </div>
             </div>
           </div>

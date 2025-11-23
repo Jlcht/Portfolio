@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Introduction.css';
 
 const Introduction = () => {
-  const roles = ['developer', 'engineer', 'problem solver', 'creator'];
+  const roles = ['student', 'engineer', 'french person', 'creator'];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -16,7 +16,7 @@ const Introduction = () => {
         // Typing forward
         if (displayedText.length < currentRole.length) {
           setDisplayedText(currentRole.substring(0, displayedText.length + 1));
-          setTypingSpeed(150);
+          setTypingSpeed(100);
         } else {
           // Pause before deleting
           setTimeout(() => setIsDeleting(true), 2000);
@@ -42,8 +42,7 @@ const Introduction = () => {
       <div className="introduction-container">
         <h2 className="introduction-subtitle">HI, I'M JEAN-LUC AND I'M A</h2>
         <h1 className="introduction-title">
-          {displayedText}
-          <span className="cursor">|</span>
+          {displayedText}<span className="cursor"></span>
         </h1>
       </div>
     </section>

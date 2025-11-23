@@ -1,0 +1,241 @@
+/* Contact Modal Overlay */
+.contact-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(500px); /* The blur effect */
+  background: rgba(0, 0, 0, 0.2); /* Light tint instead of darkness */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.contact-modal-container {
+  position: relative;
+  background: #f5f3ed; /* stays bright */
+  border-radius: 12px;
+  padding: 60px 40px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 600px;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  z-index: 2100; /* sits above the blur */
+}
+
+.contact-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.contact-close-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.contact-title {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #999;
+  text-align: center;
+  margin: 0 0 60px 0;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+.contact-description {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.contact-form-wrapper {
+  width: 100%;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-label {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: #999;
+  text-transform: capitalize;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #333;
+  transition: border-color 0.3s ease;
+  font-family: 'Arial', sans-serif;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #999;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-bottom-color: #666;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-submit {
+  align-self: flex-end;
+  padding: 12px 40px;
+  border: 1px solid #999;
+  background: transparent;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+}
+
+.form-submit:hover:not(:disabled) {
+  background: #666;
+  color: #f5f3ed;
+  border-color: #666;
+}
+
+.form-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submit-status {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Tablet Layout */
+@media (max-width: 1024px) {
+  .contact-modal-container {
+    padding: 50px 30px;
+  }
+
+  .contact-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+  }
+
+  .contact-content {
+    gap: 50px;
+  }
+
+  .contact-description {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+  .contact-modal-overlay {
+    padding: 10px;
+  }
+
+  .contact-modal-container {
+    padding: 40px 20px;
+    max-height: 85vh;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-info {
+    padding-top: 0;
+    text-align: center;
+  }
+
+  .contact-description {
+    font-size: 0.95rem;
+  }
+
+  .form-submit {
+    align-self: stretch;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 576px) {
+  .contact-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-description {
+    font-size: 0.9rem;
+  }
+
+  .form-label {
+    font-size: 0.85rem;
+  }
+
+  .form-input,
+  .form-textarea {
+    font-size: 0.95rem;
+  }
+}
