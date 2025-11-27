@@ -1,0 +1,191 @@
+.professional-experience-page {
+  background: #f5f3ed;
+  min-height: 100vh;
+}
+
+.professional-experience-section {
+  padding: 80px 60px;
+  min-height: calc(100vh - 200px);
+}
+
+.professional-experience-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.professional-experience-left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.professional-experience-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 0 150px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.professional-experience-right {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+}
+
+.professional-experience-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.experience-entry {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 150px;
+  align-items: start;
+  margin-bottom: 0;
+}
+
+.experience-date-column {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.experience-date {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  margin: 0 ;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 2.2 ;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.experience-logo {
+  display: block;
+  margin-top: 8px;
+  max-width: 150px;
+  height: auto;
+}
+
+.experience-content-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 400px;
+}
+
+.experience-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 12px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.3;
+  text-align: left;
+}
+
+.experience-description {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  text-align: left;
+}
+
+/* Tablet Layout */
+@media (max-width: 1024px) {
+  .professional-experience-section {
+    padding: 60px 40px;
+  }
+
+  .professional-experience-container {
+    grid-template-columns: 250px 1fr;
+    gap: 60px;
+  }
+
+  .professional-experience-title {
+    font-size: 2.5rem;
+  }
+
+  .experience-entry {
+    grid-template-columns: 180px 1fr;
+    gap: 40px;
+  }
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+  .professional-experience-section {
+    padding: 40px 30px;
+  }
+
+  .professional-experience-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .professional-experience-title {
+    font-size: 2rem;
+  }
+
+  .experience-entry {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .experience-date-column {
+    margin-bottom: 0;
+  }
+
+  .experience-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 576px) {
+  .professional-experience-section {
+    padding: 30px 20px;
+  }
+
+  .professional-experience-container {
+    gap: 30px;
+  }
+
+  .professional-experience-title {
+    font-size: 1.5rem;
+  }
+
+  .experience-entry {
+    gap: 12px;
+  }
+
+  .experience-title {
+    font-size: 1.1rem;
+  }
+
+  .experience-description {
+    font-size: 0.9rem;
+  }
+
+  .experience-date {
+    font-size: 0.9rem;
+  }
+}
