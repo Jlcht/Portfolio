@@ -1,11 +1,11 @@
 import React from 'react';
 import { useEffect } from 'react';
 import './ProfessionalExperience.css';
-import Header from './Header';
-import Footer from '../components/Footer';
-import FloatingContactButton from '../components/FloatingContactButton';
-import petitsDebrouillardsLogo from '../assets/images/Logo_PetitsDebrouillards-CVL_HD-png.png';
-import laposteLogo from '../assets/images/Logo_La_Poste_updated.png';
+import Header from '../Header';
+import Footer from '../../components/Footer';
+import FloatingContactButton from '../../components/FloatingContactButton';
+import petitsDebrouillardsLogo from '../../assets/images/Logo_PetitsDebrouillards-CVL_HD-png.png';
+import laposteLogo from '../../assets/images/Logo_La_Poste_updated.png';
 
 const ProfessionalExperience = () => {
 
@@ -15,7 +15,7 @@ const ProfessionalExperience = () => {
     {
       id: 1,
       title: 'Animator for Les Petits Débrouillard',
-      dateRange: 'july 2025 - august 2025',
+      dateRange: 'july - august 2025',
       description: 'Led hands-on, mobile science workshops for children with Les Petits Débrouillards, delivering engaging experiments across priority neighbourhoods to spark curiosity, teamwork, and a practical understanding of scientific concepts. ',
       logo: petitsDebrouillardsLogo,
       logoLink: 'https://www.lespetitsdebrouillards-cvl.org'
@@ -23,7 +23,7 @@ const ProfessionalExperience = () => {
     {
       id: 2,
       title: 'Polyvalent Operator at La Poste',
-      dateRange: 'january 2024 - february 2024',
+      dateRange: 'january - february 2024',
       description: 'Handled logistics and mail-sorting operations at La Poste, managing incoming and outgoing flows, ensuring accurate processing, and maintaining efficient daily distribution.',
       logo: laposteLogo,
       logoLink: 'https://www.laposte.fr'
@@ -31,7 +31,7 @@ const ProfessionalExperience = () => {
     {
       id: 3,
       title: 'Intern at Doctor IT',
-      dateRange: 'march 2020 - march 2020',
+      dateRange: 'march - march 2020',
       description: 'Provided customer-facing support at Doctor IT, welcoming clients, assessing their technical issues, explaining repair options clearly, and delivering precise diagnostics and high-quality device repairs with a focus on trust and service excellence.'
     }
   ];

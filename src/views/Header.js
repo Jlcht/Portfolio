@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 import logoGN from '../assets/images/logo192.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -29,7 +30,7 @@ const Header = () => {
     return (
             <header className="header">
                 <div className="header-left">
-                    <img src={logoGN} alt="Logo" className="header-logo" />
+                <Link to="/"><img src={logoGN} alt="Logo" className="header-logo" /></Link>
                 </div>
                 <nav className="header-nav">
                     <ul>
