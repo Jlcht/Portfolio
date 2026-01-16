@@ -1,0 +1,814 @@
+/* ===== VINTAGE NEWSPAPER THEME - BOXING PAGE ===== */
+
+.boxing-page {
+  background: linear-gradient(to bottom, #f4e8d0 0%, #e8d7b8 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Paper texture overlay */
+.boxing-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.02) 2px, rgba(0,0,0,.02) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.02) 2px, rgba(0,0,0,.02) 4px);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.boxing-section {
+  padding: 60px 40px;
+  min-height: calc(100vh - 200px);
+  position: relative;
+  z-index: 1;
+}
+
+.boxing-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #f9f3e8;
+  padding: 40px;
+  box-shadow: 
+    0 0 0 1px #2c1810,
+    0 0 0 3px #d4c4a8,
+    0 0 0 4px #2c1810,
+    0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 8px solid #2c1810;
+}
+
+/* ===== NEWSPAPER MASTHEAD ===== */
+.newspaper-masthead {
+  text-align: center;
+  padding: 30px 20px 20px;
+  border-bottom: 4px double #2c1810;
+  margin-bottom: 30px;
+  background: linear-gradient(to bottom, #faf7f0, #f9f3e8);
+}
+
+.masthead-top-line {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.75rem;
+  color: #2c1810;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.masthead-ornament {
+  font-size: 2rem;
+  color: #8b6914;
+  margin-bottom: 10px;
+}
+
+.newspaper-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #2c1810;
+  letter-spacing: 8px;
+  margin: 10px 0;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  line-height: 1;
+}
+
+.masthead-subtitle {
+  font-family: Georgia, serif;
+  font-size: 0.9rem;
+  color: #2c1810;
+  letter-spacing: 3px;
+  margin-top: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.masthead-divider {
+  width: 100%;
+  height: 2px;
+  background: #2c1810;
+  margin-top: 20px;
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+  margin-bottom: 40px;
+}
+
+.hero-headline {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.main-headline {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #2c1810;
+  letter-spacing: 4px;
+  margin: 0;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.headline-underline {
+  width: 200px;
+  height: 3px;
+  background: #8b6914;
+  margin: 15px auto;
+}
+
+.hero-subheadline {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #4a3820;
+  margin: 10px 0 0 0;
+}
+
+.hero-image-container {
+  margin: 30px 0;
+}
+
+.image-frame {
+  border: 3px solid #2c1810;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 
+    inset 0 0 0 1px #d4c4a8,
+    0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.ali-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: sepia(20%) contrast(110%) brightness(95%);
+  border: 1px solid #2c1810;
+}
+
+/* Fade-in animation for Ali photo */
+.ali-photo.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in forwards;
+  animation-delay: 2.5s; /* Starts after typewriter finishes */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Typewriter cursor */
+.cursor {
+  display: inline-block;
+  animation: blink 0.7s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.photo-caption {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #d4c4a8;
+}
+
+.caption-text {
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  color: #2c1810;
+  line-height: 1.6;
+  text-align: justify;
+  margin: 0 0 10px 0;
+}
+
+.caption-location {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.photo-credit {
+  font-family: Georgia, serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #6b5a3d;
+  margin: 0;
+  text-align: right;
+}
+
+/* ===== NEWSPAPER CONTENT - MULTI-COLUMN LAYOUT ===== */
+.newspaper-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* Main Article Column */
+.content-column {
+  position: relative;
+}
+
+.main-article {
+  padding-right: 40px;
+  border-right: 2px solid #2c1810;
+}
+
+.article-headline {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #2c1810;
+  letter-spacing: 2px;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.article-byline {
+  font-family: Georgia, serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #6b5a3d;
+  margin-bottom: 5px;
+}
+
+.article-divider {
+  width: 60px;
+  height: 2px;
+  background: #8b6914;
+  margin: 15px 0 20px 0;
+}
+
+.article-text {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #2c1810;
+  line-height: 1.8;
+  text-align: justify;
+  margin: 0 0 18px 0;
+  hyphens: auto;
+}
+
+.drop-cap {
+  float: left;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 0.8;
+  margin: 8px 8px 0 0;
+  color: #2c1810;
+}
+
+/* Pull Quote */
+.pull-quote {
+  margin: 30px 0;
+  padding: 25px;
+  border-top: 3px double #2c1810;
+  border-bottom: 3px double #2c1810;
+  background: linear-gradient(to right, transparent, rgba(139, 105, 20, 0.05), transparent);
+  position: relative;
+}
+
+.quote-marks {
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  color: #8b6914;
+  line-height: 0;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+}
+
+.quote-marks.closing {
+  top: auto;
+  bottom: -10px;
+  left: auto;
+  right: 10px;
+}
+
+.quote-text {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #2c1810;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 30px;
+  text-align: center;
+}
+
+/* ===== FIGHTER PROFILE SECTION (Naoya Inoue) ===== */
+.fighter-profile {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+  margin: 30px 0;
+  align-items: start;
+}
+
+.fighter-image-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.fighter-image-frame {
+  border: 3px solid #2c1810;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 
+    inset 0 0 0 1px #d4c4a8,
+    0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.fighter-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Strong vintage newspaper photo effect */
+  filter: 
+    grayscale(100%) 
+    sepia(40%) 
+    contrast(120%) 
+    brightness(95%)
+    blur(0.3px);
+  border: 1px solid #2c1810;
+  opacity: 0.95;
+}
+
+.fighter-caption {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #d4c4a8;
+}
+
+.fighter-caption-text {
+  font-family: Georgia, serif;
+  font-size: 0.9rem;
+  color: #2c1810;
+  line-height: 1.6;
+  text-align: left;
+  margin: 0;
+}
+
+.fighter-caption-name {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.fighter-text-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== SIDEBAR - STATS & INFO BOXES ===== */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* 
+  STATS BOX - Dark box with round notched corners
+  
+  HOW IT WORKS:
+  1. Dark brown background (#2c1810)
+  2. Four radial gradients create circular transparent cutouts in each corner
+  3. ::before and ::after pseudo-elements add cream circles in 2 corners
+  
+  TO ADJUST:
+  - Circle size: Change "20px" in radial-gradient and width/height of ::before/::after
+  - Background color: Change #2c1810
+  - Corner circle color: Change #f9f3e8 in ::before/::after
+  - Shadow: Modify box-shadow property
+  - Padding: Change padding value
+*/
+.stats-box {
+  /* Main background color - dark brown */
+  background: #2c1810;
+  
+  /* Inner spacing */
+  padding: 25px;
+  
+  /* Required for absolute positioning of corner circles */
+  position: relative;
+  
+  /* Drop shadow - adjust for different shadow effects */
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0);
+  
+  /* 
+    ROUND NOTCHED CORNERS using radial gradients
+    Each gradient creates a circular transparent area in one corner
+    
+    Syntax: radial-gradient(circle at [position], transparent [radius], [color] [radius])
+    - "circle at top left" = position of the circle
+    - "transparent 20px" = transparent from center to 20px radius
+    - "#2c1810 20px" = solid color from 20px outward
+    
+    CHANGE "20px" to make corners bigger/smaller
+  */
+  background: 
+    radial-gradient(circle at top left, transparent 30px, #2c1810 31px),
+    radial-gradient(circle at top right, transparent 30px, #2c1810 31px),
+    radial-gradient(circle at bottom left, transparent 30px, #2c1810 31px),
+    radial-gradient(circle at bottom right, transparent 30px, #2c1810 31px);
+  
+  /* Size of each gradient quadrant - 51% ensures they overlap slightly */
+  background-size: 51% 51%;
+  
+  /* Position each gradient in its corner */
+  background-position: top left, top right, bottom left, bottom right;
+  
+  /* Don't repeat the gradients */
+  background-repeat: no-repeat;
+}
+
+/* 
+  TOP-LEFT CORNER CIRCLE
+  Creates a cream-colored circle accent in the top-left corner
+  
+  TO ADJUST:
+  - Size: Change width and height (should match radial-gradient radius)
+  - Color: Change background color
+  - Position: Modify top/left values
+*/
+.stats-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;  /* Should match the "20px" in radial-gradient */
+  height: 20px; /* Should match the "20px" in radial-gradient */
+  background: #f9f3e8; /* Cream color - change to match your paper background */
+  border-radius: 50%; /* Makes it a perfect circle */
+}
+
+/* 
+  BOTTOM-RIGHT CORNER CIRCLE
+  Creates a cream-colored circle accent in the bottom-right corner
+  
+  TO ADD MORE CORNERS:
+  You need to add HTML elements with class "corner-decoration"
+  See the .corner-decoration styles below
+*/
+.stats-box::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;  /* Should match the "20px" in radial-gradient */
+  height: 20px; /* Should match the "20px" in radial-gradient */
+  background: #f9f3e8; /* Cream color */
+  border-radius: 50%; /* Makes it a perfect circle */
+}
+
+/* 
+  OPTIONAL: Additional corner decorations
+  
+  If you want circles in ALL 4 corners, add these divs to your JSX:
+  <div className="corner-decoration top-right"></div>
+  <div className="corner-decoration bottom-left"></div>
+  
+  Then uncomment the CSS below:
+*/
+
+/*
+.corner-decoration {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #f9f3e8;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.corner-decoration.top-right {
+  top: 0;
+  right: 0;
+}
+
+.corner-decoration.bottom-left {
+  bottom: 0;
+  left: 0;
+}
+*/
+
+.box-headline {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #f9f3e8;
+  letter-spacing: 2px;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.stats-divider {
+  width: 100%;
+  height: 1px;
+  background: #8b6914;
+  margin-bottom: 20px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px dotted rgba(249, 243, 232, 0.3);
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-label {
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  color: #e8d7b8;
+  font-weight: 400;
+}
+
+.stat-value {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f9f3e8;
+}
+
+/* Training Chronicles */
+.chronicles-box {
+  background: linear-gradient(to bottom, #faf7f0, #fff);
+}
+
+.chronicle-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e8d7b8;
+}
+
+.chronicle-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.chronicle-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.chronicle-content h5 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #2c1810;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.chronicle-content p {
+  font-family: Georgia, serif;
+  font-size: 0.85rem;
+  color: #4a3820;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Quote Box */
+.quote-box {
+  background: #2c1810;
+  color: #f9f3e8;
+}
+
+.vintage-quote-text {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: #f9f3e8;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.vintage-quote-author {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #8b6914;
+  text-align: right;
+  margin: 0;
+}
+
+/* ===== BOTTOM SECTION ===== */
+.bottom-section {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 4px double #2c1810;
+}
+
+.philosophy-box {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(to bottom, #faf7f0, #f9f3e8);
+  border: 2px solid #2c1810;
+}
+
+.philosophy-headline {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #2c1810;
+  letter-spacing: 3px;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+}
+
+.ornamental-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.divider-ornament {
+  font-size: 1.2rem;
+  color: #8b6914;
+}
+
+.divider-line {
+  flex: 1;
+  max-width: 200px;
+  height: 2px;
+  background: #8b6914;
+}
+
+.philosophy-text {
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  color: #2c1810;
+  line-height: 1.8;
+  text-align: justify;
+  max-width: 900px;
+  margin: 0 auto;
+  hyphens: auto;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .boxing-section {
+    padding: 40px 30px;
+  }
+
+  .boxing-container {
+    padding: 30px;
+  }
+
+  .newspaper-title {
+    font-size: 3rem;
+    letter-spacing: 4px;
+  }
+
+  .main-headline {
+    font-size: 2.5rem;
+  }
+
+  .newspaper-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .main-article {
+    padding-right: 0;
+    border-right: none;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #2c1810;
+  }
+
+  .fighter-profile {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .fighter-image-section {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .boxing-section {
+    padding: 30px 20px;
+  }
+
+  .boxing-container {
+    padding: 20px;
+    border-width: 4px;
+  }
+
+  .newspaper-title {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+  }
+
+  .masthead-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+  }
+
+  .main-headline {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .hero-subheadline {
+    font-size: 1rem;
+  }
+
+  .article-headline {
+    font-size: 1.5rem;
+  }
+
+  .article-text {
+    font-size: 0.95rem;
+  }
+
+  .drop-cap {
+    font-size: 3.5rem;
+  }
+
+  .quote-text {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .philosophy-headline {
+    font-size: 1.5rem;
+  }
+
+  .philosophy-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .boxing-container {
+    padding: 15px;
+  }
+
+  .newspaper-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .main-headline {
+    font-size: 1.5rem;
+  }
+
+  .article-headline {
+    font-size: 1.2rem;
+  }
+
+  .image-frame {
+    padding: 10px;
+  }
+
+  .caption-text {
+    font-size: 0.85rem;
+  }
+
+  .stats-box {
+    padding: 15px;
+  }
+
+  .philosophy-box {
+    padding: 20px;
+  }
+}

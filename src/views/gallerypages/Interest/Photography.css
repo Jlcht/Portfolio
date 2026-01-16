@@ -1,0 +1,418 @@
+.photography-page {
+  background: #f5f3ed;
+  min-height: 100vh;
+}
+
+.photography-section {
+  padding: 80px 60px;
+  min-height: calc(100vh - 200px);
+}
+
+.photography-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.photography-page-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.photography-main-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 20px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.photography-subtitle {
+  font-size: 1.1rem;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ===== PHOTOGRAPHY SECTION ===== */
+.photography-3d-section {
+  margin-bottom: 80px;
+}
+
+.photography-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.photography-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 15px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.camera-3d-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.camera-canvas-wrapper {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.camera-canvas-wrapper canvas {
+  width: 100%;
+  height: 500px;
+  display: block;
+}
+
+.camera-controls-hint {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 12px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+
+.camera-controls-hint p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.camera-info-panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.camera-info-panel h3 {
+  font-size: 1.5rem;
+  color: #000;
+  margin: 0 0 15px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+}
+
+.camera-description {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.camera-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.spec-icon {
+  font-size: 1.5rem;
+}
+
+.spec-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spec-label {
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.spec-value {
+  font-size: 1rem;
+  color: #000;
+  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.photography-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.photo-stat {
+  text-align: center;
+  padding: 15px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.photo-stat .stat-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #9b59b6;
+  font-family: 'Courier New', monospace;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.photo-stat .stat-label {
+  font-size: 0.8rem;
+  color: #666;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Photography Gallery Preview */
+.photography-gallery-preview {
+  margin-top: 50px;
+}
+
+.photography-gallery-preview h3 {
+  font-size: 1.5rem;
+  color: #000;
+  margin: 0 0 25px 0;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-color: #9b59b6;
+}
+
+.gallery-item.active {
+  border-color: #9b59b6;
+  box-shadow: 0 5px 20px rgba(155, 89, 182, 0.3);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.gallery-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.gallery-location {
+  font-size: 0.85rem;
+  color: #9b59b6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Photography Quote */
+.photography-quote {
+  text-align: center;
+  padding: 40px;
+  background: #fff;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  margin-top: 50px;
+}
+
+.photography-quote p {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #000;
+  margin: 0 0 10px 0;
+  font-family: Georgia, serif;
+  line-height: 1.8;
+}
+
+.quote-author {
+  font-size: 1rem;
+  color: #666;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Camera LCD Screen Styles */
+.camera-lcd-screen {
+  width: 180px;
+  height: 120px;
+  background: #000;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.lcd-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lcd-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lcd-title {
+  font-size: 10px;
+  color: #fff;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+.lcd-location {
+  font-size: 8px;
+  color: #9b59b6;
+  font-family: 'Courier New', monospace;
+}
+
+.camera-logo {
+  font-size: 12px;
+  font-weight: bold;
+  color: #e74c3c;
+  font-family: Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+.camera-model {
+  font-size: 8px;
+  color: #999;
+  font-family: Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .photography-section {
+    padding: 60px 40px;
+  }
+
+  .photography-main-title {
+    font-size: 2.5rem;
+  }
+
+  .camera-3d-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .photography-section {
+    padding: 40px 30px;
+  }
+
+  .photography-main-title {
+    font-size: 2rem;
+  }
+
+  .photography-subtitle {
+    font-size: 1rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .photography-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .photography-section {
+    padding: 30px 20px;
+  }
+
+  .photography-main-title {
+    font-size: 1.5rem;
+  }
+
+  .photography-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .camera-info-panel {
+    padding: 20px;
+  }
+
+  .photography-quote p {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,644 @@
+.interest-gallery-page {
+  background: #f5f3ed;
+  min-height: 100vh;
+}
+
+.interest-gallery-section {
+  padding: 80px 60px;
+  min-height: calc(100vh - 200px);
+}
+
+.interest-gallery-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.interest-gallery-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.interest-gallery-main-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 20px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.interest-gallery-subtitle {
+  font-size: 1.1rem;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* Interests Grid */
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+/* Interest Card */
+.interest-card {
+  position: relative;
+  cursor: pointer;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.interest-card-inner {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px 30px;
+  height:100%; /* ← CHANGE THIS to set fixed card height (e.g., height: 500px;) or keep 100% for flexible height */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: all 0.3s ease;
+  border: 2px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.interest-card:hover .interest-card-inner {
+  transform: translateY(-5px);
+  border-color: var(--card-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Glowing effect - removed for clean look */
+.interest-card-glow {
+  display: none;
+}
+
+/* Animated border - simplified */
+.interest-card-border {
+  display: none;
+}
+
+/* ===== VINTAGE NEWSPAPER CARD (Boxing) - REALISTIC STACKED NEWSPAPERS ===== */
+
+.vintage-card {
+  position: relative;
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+}
+
+.vintage-card:hover {
+  transform: rotate(-10deg) translateY(-8px);
+
+}
+
+/* Main newspaper (front) */
+.vintage-card .interest-card-inner {
+  background: linear-gradient(135deg, #f4e8d0 0%, #ede1c8 50%, #e8d7b8 100%);
+  border: none;
+  box-shadow: 
+    0 0 0 1px #2c1810,
+    0 0 0 2px #e8d7b8,
+    0 0 0 3px #2c1810,
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    -3px 3px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  padding: 25px 20px;
+  border-radius: 0;
+  z-index: 4;
+  transition: box-shadow 0.3s ease;
+}
+
+.vintage-card:hover .interest-card-inner {
+  box-shadow: 
+    0 0 0 1px #2c1810,
+    0 0 0 2px #e8d7b8,
+    0 0 0 3px #2c1810,
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    0 12px 24px rgba(0, 0, 0, 0.25),
+    -4px 4px 12px rgba(0, 0, 0, 0.2);
+    
+}
+
+/* Second newspaper page (behind left) */
+.vintage-card::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -12px;
+  right: 15px;
+  bottom: 10px;
+  background: linear-gradient(135deg, #e8d7b8 0%, #dcc9a8 100%);
+  box-shadow: 
+    0 0 0 1px #2c1810,
+    0 0 0 2px #d4c4a8,
+    0 0 0 3px #2c1810,
+    0 3px 6px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  transform: rotate(3deg);
+  transform-origin: center center;
+  transition: transform 0.5s ease;
+}
+
+.vintage-card:hover::before {
+  transform: rotate(0deg) translateY(-8px);
+}
+
+/* Third newspaper page (behind right) */
+.vintage-card::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: -8px;
+  bottom: -5px;
+  background: linear-gradient(135deg, #dcc9a8 0%, #d4c4a8 100%);
+  box-shadow: 
+    0 0 0 1px #2c1810,
+    0 0 0 2px #cbb89a,
+    0 0 0 3px #2c1810,
+    0 4px 8px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+  transform: rotate(4deg);
+  transform-origin: center center;
+  transition: transform 0.5s ease;
+}
+
+.vintage-card:hover::after {
+  transform: rotate(0deg) translateX(-5px);
+}
+
+/* Paper texture overlay */
+.vintage-card .interest-card-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.03) 2px, rgba(0,0,0,.03) 4px);
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* Subtle aging spots */
+.vintage-card .interest-card-inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(139, 105, 20, 0.05) 0%, transparent 3%),
+    radial-gradient(circle at 80% 70%, rgba(139, 105, 20, 0.04) 0%, transparent 4%),
+    radial-gradient(circle at 50% 50%, rgba(139, 105, 20, 0.03) 0%, transparent 5%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure content is above texture */
+.vintage-card .interest-card-inner > * {
+  position: relative;
+  z-index: 1;
+}
+
+.vintage-card:hover .interest-card-inner {
+  box-shadow: 
+    0 0 0 1px #2c1810,
+    0 0 0 3px #d4c4a8,
+    0 0 0 4px #2c1810,
+    0 10px 25px rgba(0, 0, 0, 0.5);
+  transform: translateY(-8px) rotate(-2deg);
+  transition: transform ease 0.5s;
+}
+
+/* Newspaper Masthead Style Header */
+.vintage-card .interest-card-header {
+  border-bottom: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding-bottom: 12px;
+}
+
+/* Top tagline */
+.vintage-card .interest-card-header::before {
+  content: 'Est. 1884 • The Premier Chronicle of Pugilistic Excellence';
+  font-family: Georgia, serif;
+  font-size: 0.6rem;
+  color: #2c1810;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.vintage-card .interest-emoji {
+  font-size: 1.8rem;
+  filter: sepia(40%) brightness(85%);
+  order: -1;
+  margin-bottom: 5px;
+  color: #8b6914;
+}
+
+
+.vintage-card .interest-title {
+  font-family: 'Times New Roman', Times, serif;
+  color: #2c1810;
+  letter-spacing: 5px;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin: 0;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Subtitle under title */
+.vintage-card .interest-title::after {
+  content: 'THE BOXING CHRONICLE';
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  margin-top: 6px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+/* Decorative line under masthead */
+.vintage-card .interest-card-header::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #2c1810;
+  margin-top: 8px;
+}
+
+.vintage-card .interest-description {
+  font-family: Georgia, serif;
+  color: #2c1810;
+  font-style: normal;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 12px 0;
+  padding: 0 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-top: 1px solid #2c1810;
+  border-bottom: 1px solid #2c1810;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Vintage image container for Boxing card */
+.vintage-card .interest-image-container {
+  margin: 0 auto;
+  padding: 8px;
+  border: 2px solid #2c1810;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #d4c4a8;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vintage-card .interest-vintage-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  /* Old newspaper photo effect */
+  filter: 
+    grayscale(100%) 
+    sepia(35%) 
+    contrast(115%) 
+    brightness(96%)
+    blur(0.2px);
+  opacity: 0.95;
+  border: 1px solid #2c1810;
+}
+
+/* Stats section as newspaper columns */
+.vintage-card .interest-stats {
+  border-top: 2px solid #2c1810;
+  border-bottom: 2px solid #2c1810;
+  background: rgba(44, 24, 16, 0.03);
+  padding: 12px 150px;
+  margin: 12px 0;
+  margin-bottom: -25px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vintage-card .interest-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px dotted rgba(44, 24, 16, 0.3);
+}
+
+.vintage-card .interest-stat-item:last-child {
+  border-bottom: none;
+}
+
+.vintage-card .stat-dot {
+  color: #2c1810;
+  font-size: 0.7rem;
+}
+
+.vintage-card .stat-text {
+  font-family: 'Courier New', monospace;
+  color: #2c1810;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Footer as newspaper call-to-action */
+.vintage-card .interest-card-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 2px solid #2c1810;
+  justify-content: center;
+  background: rgba(44, 24, 16, 0.05);
+  padding: 15px 10px; 
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -25px;
+}
+
+.vintage-card .explore-text {
+  font-family: 'Times New Roman', Times, serif;
+  color: #2c1810;
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+}
+
+.vintage-card .arrow-icon {
+  color: #2c1810;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Card Header */
+.interest-card-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.interest-emoji {
+  font-size: 3.5rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.interest-card:hover .interest-emoji {
+  transform: scale(1.1);
+}
+
+.interest-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Description */
+.interest-description {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.7;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  flex-grow: 1;
+  font-weight: 400;
+}
+
+/* Stats */
+.interest-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 0;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.interest-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #666;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.interest-card:hover .interest-stat-item {
+  color: #333;
+  transform: translateX(5px);
+}
+
+.stat-dot {
+  font-size: 1.2rem;
+  color: var(--card-color);
+}
+
+.stat-text {
+  font-size: 0.95rem;
+}
+
+/* Card Footer */
+.interest-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.explore-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--card-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.arrow-icon {
+  font-size: 1.5rem;
+  color: var(--card-color);
+  transition: transform 0.3s ease;
+}
+
+.interest-card:hover .arrow-icon {
+  transform: translateX(10px);
+}
+
+/* Gallery Quote */
+.gallery-quote {
+  text-align: center;
+  padding: 50px 40px;
+  background: #fff;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-quote::before {
+  display: none;
+}
+
+.gallery-quote p {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #000;
+  margin: 0 0 15px 0;
+  font-family: Georgia, serif;
+  line-height: 1.8;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+}
+
+.quote-author {
+  font-size: 1rem;
+  color: #666;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .interest-gallery-section {
+    padding: 60px 40px;
+  }
+
+  .interest-gallery-main-title {
+    font-size: 2.5rem;
+  }
+
+  .interests-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .interest-gallery-section {
+    padding: 40px 30px;
+  }
+
+  .interest-gallery-main-title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .interest-gallery-subtitle {
+    font-size: 1rem;
+  }
+
+  .interests-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .interest-card-inner {
+    padding: 30px 25px;
+  }
+
+  .interest-emoji {
+    font-size: 3rem;
+  }
+
+  .interest-title {
+    font-size: 1.5rem;
+  }
+
+  .interest-description {
+    font-size: 0.95rem;
+  }
+
+  .gallery-quote p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .interest-gallery-header {
+    margin-bottom: 50px;
+  }
+
+  .interest-gallery-main-title {
+    font-size: 1.5rem;
+  }
+
+  .interest-gallery-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .interest-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .interest-emoji {
+    font-size: 2.5rem;
+  }
+
+  .interest-title {
+    font-size: 1.3rem;
+  }
+
+  .gallery-quote {
+    padding: 30px 20px;
+  }
+
+  .gallery-quote p {
+    font-size: 1.1rem;
+  }
+
+  .quote-author {
+    font-size: 0.9rem;
+  }
+}
