@@ -155,7 +155,7 @@
 .ali-photo.fade-in {
   opacity: 0;
   animation: fadeIn 1.5s ease-in forwards;
-  animation-delay: 2.5s; /* Starts after typewriter finishes */
+  animation-delay: 2.5s;
 }
 
 @keyframes fadeIn {
@@ -223,7 +223,6 @@
   margin-bottom: 40px;
 }
 
-/* Main Article Column */
 .content-column {
   position: relative;
 }
@@ -279,44 +278,6 @@
   color: #2c1810;
 }
 
-/* Pull Quote */
-.pull-quote {
-  margin: 30px 0;
-  padding: 25px;
-  border-top: 3px double #2c1810;
-  border-bottom: 3px double #2c1810;
-  background: linear-gradient(to right, transparent, rgba(139, 105, 20, 0.05), transparent);
-  position: relative;
-}
-
-.quote-marks {
-  font-family: Georgia, serif;
-  font-size: 4rem;
-  color: #8b6914;
-  line-height: 0;
-  position: absolute;
-  top: 20px;
-  left: 10px;
-}
-
-.quote-marks.closing {
-  top: auto;
-  bottom: -10px;
-  left: auto;
-  right: 10px;
-}
-
-.quote-text {
-  font-family: Georgia, serif;
-  font-size: 1.2rem;
-  font-style: italic;
-  color: #2c1810;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0 30px;
-  text-align: center;
-}
-
 /* ===== FIGHTER PROFILE SECTION (Naoya Inoue) ===== */
 .fighter-profile {
   display: grid;
@@ -345,7 +306,6 @@
   width: 100%;
   height: auto;
   display: block;
-  /* Strong vintage newspaper photo effect */
   filter: 
     grayscale(100%) 
     sepia(40%) 
@@ -356,12 +316,6 @@
   opacity: 0.95;
 }
 
-.fighter-caption {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #d4c4a8;
-}
-
 .fighter-caption-text {
   font-family: Georgia, serif;
   font-size: 0.9rem;
@@ -369,12 +323,6 @@
   line-height: 1.6;
   text-align: left;
   margin: 0;
-}
-
-.fighter-caption-name {
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .fighter-text-section {
@@ -389,130 +337,42 @@
   gap: 25px;
 }
 
-/* 
-  STATS BOX - Dark box with round notched corners
-  
-  HOW IT WORKS:
-  1. Dark brown background (#2c1810)
-  2. Four radial gradients create circular transparent cutouts in each corner
-  3. ::before and ::after pseudo-elements add cream circles in 2 corners
-  
-  TO ADJUST:
-  - Circle size: Change "20px" in radial-gradient and width/height of ::before/::after
-  - Background color: Change #2c1810
-  - Corner circle color: Change #f9f3e8 in ::before/::after
-  - Shadow: Modify box-shadow property
-  - Padding: Change padding value
-*/
 .stats-box {
-  /* Main background color - dark brown */
   background: #2c1810;
-  
-  /* Inner spacing */
   padding: 25px;
-  
-  /* Required for absolute positioning of corner circles */
   position: relative;
-  
-  /* Drop shadow - adjust for different shadow effects */
   box-shadow: 3px 3px 0 rgba(0, 0, 0, 0);
-  
-  /* 
-    ROUND NOTCHED CORNERS using radial gradients
-    Each gradient creates a circular transparent area in one corner
-    
-    Syntax: radial-gradient(circle at [position], transparent [radius], [color] [radius])
-    - "circle at top left" = position of the circle
-    - "transparent 20px" = transparent from center to 20px radius
-    - "#2c1810 20px" = solid color from 20px outward
-    
-    CHANGE "20px" to make corners bigger/smaller
-  */
   background: 
     radial-gradient(circle at top left, transparent 30px, #2c1810 31px),
     radial-gradient(circle at top right, transparent 30px, #2c1810 31px),
     radial-gradient(circle at bottom left, transparent 30px, #2c1810 31px),
     radial-gradient(circle at bottom right, transparent 30px, #2c1810 31px);
-  
-  /* Size of each gradient quadrant - 51% ensures they overlap slightly */
   background-size: 51% 51%;
-  
-  /* Position each gradient in its corner */
   background-position: top left, top right, bottom left, bottom right;
-  
-  /* Don't repeat the gradients */
   background-repeat: no-repeat;
 }
 
-/* 
-  TOP-LEFT CORNER CIRCLE
-  Creates a cream-colored circle accent in the top-left corner
-  
-  TO ADJUST:
-  - Size: Change width and height (should match radial-gradient radius)
-  - Color: Change background color
-  - Position: Modify top/left values
-*/
 .stats-box::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 20px;  /* Should match the "20px" in radial-gradient */
-  height: 20px; /* Should match the "20px" in radial-gradient */
-  background: #f9f3e8; /* Cream color - change to match your paper background */
-  border-radius: 50%; /* Makes it a perfect circle */
+  width: 20px;
+  height: 20px;
+  background: #f9f3e8;
+  border-radius: 50%;
 }
 
-/* 
-  BOTTOM-RIGHT CORNER CIRCLE
-  Creates a cream-colored circle accent in the bottom-right corner
-  
-  TO ADD MORE CORNERS:
-  You need to add HTML elements with class "corner-decoration"
-  See the .corner-decoration styles below
-*/
 .stats-box::after {
   content: '';
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 20px;  /* Should match the "20px" in radial-gradient */
-  height: 20px; /* Should match the "20px" in radial-gradient */
-  background: #f9f3e8; /* Cream color */
-  border-radius: 50%; /* Makes it a perfect circle */
-}
-
-/* 
-  OPTIONAL: Additional corner decorations
-  
-  If you want circles in ALL 4 corners, add these divs to your JSX:
-  <div className="corner-decoration top-right"></div>
-  <div className="corner-decoration bottom-left"></div>
-  
-  Then uncomment the CSS below:
-*/
-
-/*
-.corner-decoration {
-  position: absolute;
   width: 20px;
   height: 20px;
   background: #f9f3e8;
   border-radius: 50%;
-  z-index: 1;
 }
-
-.corner-decoration.top-right {
-  top: 0;
-  right: 0;
-}
-
-.corner-decoration.bottom-left {
-  bottom: 0;
-  left: 0;
-}
-*/
 
 .box-headline {
   font-family: 'Times New Roman', Times, serif;
@@ -556,129 +416,6 @@
   font-size: 1rem;
   font-weight: 700;
   color: #f9f3e8;
-}
-
-/* Training Chronicles */
-.chronicles-box {
-  background: linear-gradient(to bottom, #faf7f0, #fff);
-}
-
-.chronicle-item {
-  display: flex;
-  gap: 15px;
-  align-items: flex-start;
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #e8d7b8;
-}
-
-.chronicle-item:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.chronicle-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.chronicle-content h5 {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 1rem;
-  font-weight: 900;
-  color: #2c1810;
-  margin: 0 0 5px 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.chronicle-content p {
-  font-family: Georgia, serif;
-  font-size: 0.85rem;
-  color: #4a3820;
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* Quote Box */
-.quote-box {
-  background: #2c1810;
-  color: #f9f3e8;
-}
-
-.vintage-quote-text {
-  font-family: Georgia, serif;
-  font-size: 1rem;
-  font-style: italic;
-  color: #f9f3e8;
-  line-height: 1.6;
-  margin: 0 0 10px 0;
-  text-align: center;
-}
-
-.vintage-quote-author {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #8b6914;
-  text-align: right;
-  margin: 0;
-}
-
-/* ===== BOTTOM SECTION ===== */
-.bottom-section {
-  margin-top: 40px;
-  padding-top: 30px;
-  border-top: 4px double #2c1810;
-}
-
-.philosophy-box {
-  text-align: center;
-  padding: 30px;
-  background: linear-gradient(to bottom, #faf7f0, #f9f3e8);
-  border: 2px solid #2c1810;
-}
-
-.philosophy-headline {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 2rem;
-  font-weight: 900;
-  color: #2c1810;
-  letter-spacing: 3px;
-  margin: 0 0 20px 0;
-  text-transform: uppercase;
-}
-
-.ornamental-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  margin: 20px 0;
-}
-
-.divider-ornament {
-  font-size: 1.2rem;
-  color: #8b6914;
-}
-
-.divider-line {
-  flex: 1;
-  max-width: 200px;
-  height: 2px;
-  background: #8b6914;
-}
-
-.philosophy-text {
-  font-family: Georgia, serif;
-  font-size: 1.1rem;
-  color: #2c1810;
-  line-height: 1.8;
-  text-align: justify;
-  max-width: 900px;
-  margin: 0 auto;
-  hyphens: auto;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -763,19 +500,6 @@
   .drop-cap {
     font-size: 3.5rem;
   }
-
-  .quote-text {
-    font-size: 1rem;
-    padding: 0 20px;
-  }
-
-  .philosophy-headline {
-    font-size: 1.5rem;
-  }
-
-  .philosophy-text {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -800,15 +524,7 @@
     padding: 10px;
   }
 
-  .caption-text {
-    font-size: 0.85rem;
-  }
-
-  .stats-box {
-    padding: 15px;
-  }
-
-  .philosophy-box {
-    padding: 20px;
+  .drop-cap {
+    font-size: 3rem;
   }
 }

@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import './InterestGallery.css';
 import Header from '../Header';
 import Footer from '../../components/Footer';
@@ -45,6 +46,53 @@ const InterestGallery = () => {
     }
   ];
 
+  // Tilt effect for Travel card
+  const travelCardRef = useRef(null);
+  const [lastY, setLastY] = useState(0);
+  
+  const springValues = {
+    damping: 30,
+    stiffness: 100,
+    mass: 2
+  };
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useSpring(useMotionValue(0), springValues);
+  const rotateY = useSpring(useMotionValue(0), springValues);
+  const scale = useSpring(1, springValues);
+
+  function handleTravelCardMouse(e) {
+    if (!travelCardRef.current) return;
+
+    const rect = travelCardRef.current.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left - rect.width / 2;
+    const offsetY = e.clientY - rect.top - rect.height / 2;
+
+    const rotationX = (offsetY / (rect.height / 2)) * -14;
+    const rotationY = (offsetX / (rect.width / 2)) * 14;
+
+    rotateX.set(rotationX);
+    rotateY.set(rotationY);
+
+    x.set(e.clientX - rect.left);
+    y.set(e.clientY - rect.top);
+
+    const velocityY = offsetY - lastY;
+    setLastY(offsetY);
+  }
+
+  function handleTravelCardEnter() {
+    scale.set(1.05);
+  }
+
+  function handleTravelCardLeave() {
+    scale.set(1);
+    rotateX.set(0);
+    rotateY.set(0);
+  }
+
+
   return (
     <div className="interest-gallery-page">
       <Header />
@@ -61,7 +109,7 @@ const InterestGallery = () => {
             {interests.map((interest, index) => (
               <div 
                 key={interest.id}
-                className={`interest-card ${interest.title === 'Boxing' ? 'vintage-card' : ''}`}
+                className={`interest-card ${interest.title === 'Boxing' ? 'vintage-card' : ''} ${interest.title === 'Travel' ? 'travel-card' : ''}`}
                 onClick={() => navigate(interest.path)}
                 style={{ 
                   '--card-color': interest.color,
@@ -69,42 +117,78 @@ const InterestGallery = () => {
                   animationDelay: `${index * 0.1}s`
                 }}
               >
-                <div className="interest-card-inner">
-                  <div className="interest-card-glow"></div>
-                  
-                  <div className="interest-card-header">
-                    <div className="interest-emoji">{interest.emoji}</div>
-                    <h2 className="interest-title">{interest.title}</h2>
-                  </div>
-
-                  {interest.image ? (
-                    <div className="interest-image-container">
-                      <img 
-                        src={interest.image} 
-                        alt={`${interest.title} illustration`}
-                        className="interest-vintage-image"
-                      />
+                {interest.title === 'Travel' ? (
+                  <motion.div 
+                    ref={travelCardRef}
+                    className="interest-card-inner"
+                    style={{
+                      rotateX,
+                      rotateY,
+                      scale
+                    }}
+                    onMouseMove={handleTravelCardMouse}
+                    onMouseEnter={handleTravelCardEnter}
+                    onMouseLeave={handleTravelCardLeave}
+                  >
+                    <div className="interest-card-glow"></div>
+                    
+                    {/* Ocean island pattern background */}
+                    <div className="travel-ocean-backdrop">
+                      <div className="travel-island-backdrop" />
                     </div>
-                  ) : (
-                    <p className="interest-description">{interest.description}</p>
-                  )}
-
-                  <div className="interest-stats">
-                    {interest.stats.map((stat, idx) => (
-                      <div key={idx} className="interest-stat-item">
-                        <span className="stat-dot">•</span>
-                        <span className="stat-text">{stat}</span>
+                    <svg height={0} width={0}>
+                      <filter id="handDrawnNoise">
+                        <feTurbulence result="noise" numOctaves={5} baseFrequency="0.0065" type="fractalNoise" />
+                        <feDisplacementMap yChannelSelector="G" xChannelSelector="R" scale={900} in2="noise" in="SourceGraphic" />
+                      </filter>
+                    </svg>
+                    
+                    <div className="travel-content">
+                      <h2 className="interest-title">{interest.title}</h2>
+                      <div className="interest-card-footer">
+                        <span className="explore-text">Explore</span>
+                        <span className="arrow-icon">→</span>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <div className="interest-card-inner">
+                    <div className="interest-card-glow"></div>
+                      <div className="interest-card-header">
+                        <div className="interest-emoji">{interest.emoji}</div>
+                        <h2 className="interest-title">{interest.title}</h2>
+                      </div>
 
-                  <div className="interest-card-footer">
-                    <span className="explore-text">
-                      {interest.title === 'Boxing' ? 'Read Chronicle' : 'Explore'}
-                    </span>
-                    <span className="arrow-icon">→</span>
+                      {interest.image ? (
+                        <div className="interest-image-container">
+                          <img 
+                            src={interest.image} 
+                            alt={`${interest.title} illustration`}
+                            className="interest-vintage-image"
+                          />
+                        </div>
+                      ) : (
+                        <p className="interest-description">{interest.description}</p>
+                      )}
+
+                      <div className="interest-stats">
+                        {interest.stats.map((stat, idx) => (
+                          <div key={idx} className="interest-stat-item">
+                            <span className="stat-dot">•</span>
+                            <span className="stat-text">{stat}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="interest-card-footer">
+                        <span className="explore-text">
+                          {interest.title === 'Boxing' ? 'Read Chronicle' : 'Explore'}
+                        </span>
+                        <span className="arrow-icon">→</span>
+                      </div>
                   </div>
-                </div>
+                )}
+
 
                 <div className="interest-card-border"></div>
               </div>

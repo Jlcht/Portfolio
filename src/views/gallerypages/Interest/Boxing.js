@@ -73,7 +73,7 @@ const Boxing = () => {
                     <span className="caption-location">LEWISTON, MAINE</span> —
                     Muhammad Ali, "The Greatest," stands victorious after
                     delivering a devastating knockout blow. The champion's
-                    prowess in the ring remains unmatched, cementing his legacy
+                    progress in the ring remains unmatched, cementing his legacy
                     as the most formidable pugilist of our era.
                   </p>
                   <p className="photo-credit">
