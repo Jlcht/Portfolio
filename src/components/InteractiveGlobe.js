@@ -259,9 +259,7 @@ const InteractiveGlobe = () => {
           bump: null, // No bump map for performance
           showAtmosphere: true,
           atmosphereColor: '#1a3a5c',
-          atmosphereAltitude: 0.3,
-          label: '🌌 Space View',
-          description: 'Low detail for performance'
+          atmosphereAltitude: 0.3
         };
       
       case 'far':
@@ -271,9 +269,7 @@ const InteractiveGlobe = () => {
           bump: '//unpkg.com/three-globe/example/img/earth-topology.png',
           showAtmosphere: true,
           atmosphereColor: '#1a3a5c',
-          atmosphereAltitude: 0.25,
-          label: '🌍 Global View',
-          description: 'Standard resolution'
+          atmosphereAltitude: 0.25
         };
       
       case 'medium':
@@ -283,9 +279,7 @@ const InteractiveGlobe = () => {
           bump: '//unpkg.com/three-globe/example/img/earth-topology.png',
           showAtmosphere: true,
           atmosphereColor: '#3a8ad4',
-          atmosphereAltitude: 0.2,
-          label: '🗺️ Regional View',
-          description: 'Enhanced detail'
+          atmosphereAltitude: 0.2
         };
       
       case 'close':
@@ -295,13 +289,17 @@ const InteractiveGlobe = () => {
           bump: '//unpkg.com/three-globe/example/img/earth-topology.png',
           showAtmosphere: true,
           atmosphereColor: '#3a8ad4',
-          atmosphereAltitude: 0.15,
-          label: '🔍 Detailed View',
-          description: 'Maximum resolution'
+          atmosphereAltitude: 0.15
         };
       
       default:
-        return getTextureConfig.call(this, 'far');
+        return {
+          globe: '//unpkg.com/three-globe/example/img/earth-blue-marble.jpg',
+          bump: '//unpkg.com/three-globe/example/img/earth-topology.png',
+          showAtmosphere: true,
+          atmosphereColor: '#1a3a5c',
+          atmosphereAltitude: 0.25
+        };
     }
   };
 
@@ -340,7 +338,6 @@ const InteractiveGlobe = () => {
         // Enhanced click interaction with zoom and card display
         onPointClick={(point) => {
           if (point) {
-            console.log('Visiting:', point.label);
             setSelectedLocation(point);
             // Zoom in close to the location
             if (globeEl.current) {
