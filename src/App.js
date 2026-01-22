@@ -12,7 +12,7 @@ import Photography from './views/gallerypages/Interest/Photography';
 
 function AppContent() {
   const location = useLocation();
-  const hideBannerPaths = ['/interests/travel'];
+  const hideBannerPaths = ['/interests/travel', '/interests/photography'];
   const shouldShowBanner = !hideBannerPaths.includes(location.pathname);
 
   return (
