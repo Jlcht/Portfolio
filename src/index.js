@@ -6,9 +6,9 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  // StrictMode temporarily disabled to prevent texture unit overflow
+  // (StrictMode mounts components twice in development, doubling texture usage)
+  <App />
 );
 
 // If you want to start measuring performance in your app, pass a function

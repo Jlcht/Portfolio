@@ -55,7 +55,7 @@ export default function Photography() {
           left:'50%', 
           transform:'translateX(-50%)'  // Center horizontally
         }}>
-          Loading Photo Expo with Physics...
+          Loading Photo Gallery...
         </div>
       }>
         

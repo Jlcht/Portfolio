@@ -32,6 +32,7 @@ export function ExpoScene() {
         penumbra={0.5}               
         color="#FDF4DC"              
         distance={ 40}
+        castShadow={false}
       />
 
       <TargetedSpotlight 
@@ -42,6 +43,7 @@ export function ExpoScene() {
         penumbra={0.5}               
         color="#FDF4DC"              
         distance={40}
+        castShadow={false}
       />
 
       <TargetedSpotlight 
@@ -52,6 +54,7 @@ export function ExpoScene() {
         penumbra={0.5}               
         color="#FDF4DC"              
         distance={40}
+        castShadow={false}
       />
       
       <TargetedSpotlight 
@@ -62,6 +65,7 @@ export function ExpoScene() {
         penumbra={0.5}               
         color="#FDF4DC"              
         distance={40}
+        castShadow={false}
       />
       
       
@@ -78,7 +82,7 @@ export function ExpoScene() {
         color="#a47b4e"                     
       />
 
-      {/* Instructions panel - TEST POSITION (same as Barcelona photo) */}
+      {/* Instructions panel */}
       <InstructionsFrame 
         position={[-20, 4, -0.2]}     // In front of the wall, left side, eye level
         rotation={[0, Math.PI, 0]}   // Rotate 180° to face into the room (toward -z)
@@ -91,8 +95,10 @@ export function ExpoScene() {
         angle={Math.PI / 8}
         penumbra={0.5}
         color="#FDF4DC"
-        distance={16}                // Limit range to prevent bleeding through walls
+        distance={16}
+        castShadow={false}                
       />
+
 
       
       {/* ========================================
@@ -219,7 +225,7 @@ export function ExpoScene() {
       {/* Photo frames are just visual elements, no collision needed */}
       
       <PhotoFrame 
-        position={[-25, 4, -29.5]}             
+        position={[-25, 4, -29.8]}             
         imageSrc={images.barcelona} 
         size={[3, 4]}
       />
@@ -232,14 +238,15 @@ export function ExpoScene() {
         angle={Math.PI / 16}          // Narrow cone (11.25 degrees)
         penumbra={0.5}               // Soft edges for dramatic effect
         color="#FDF4DC"              // Warm white
-        distance={16}                // Limit range to prevent bleeding through walls
+        distance={16}
+        castShadow={false}                // Limit range to prevent bleeding through walls
       />
       
       <PhotoFrame 
-        position={[-10, 4, -29.5]}             
+        position={[-10, 4, -29.8]}             
         rotation={[0, 0, 0]}
         imageSrc={images.bucarest} 
-        size={[4, 4]}
+        size={[3, 4]}
       />
       
       <TargetedSpotlight 
@@ -249,13 +256,14 @@ export function ExpoScene() {
         angle={Math.PI / 16}
         penumbra={0.5}
         color="#FDF4DC"
-        distance={16}                // Limit range to prevent bleeding through walls
+        distance={16}
+        castShadow={false}                // Limit range to prevent bleeding through walls
       />
 
       <PhotoFrame 
-        position={[-4, 4, -29.5]}              
+        position={[-4, 4, -29.8]}              
         imageSrc={images.malta} 
-        size={[4, 4]}
+        size={[3, 4]}
       />
       <TargetedSpotlight 
         position={[-4, 15, -25]}      
@@ -264,18 +272,11 @@ export function ExpoScene() {
         angle={Math.PI / 16}
         penumbra={0.5}
         color="#FDF4DC"
-        distance={16}                // Limit range to prevent bleeding through walls
+        distance={16}
+        castShadow={false}                // Limit range to prevent bleeding through walls
       />
       
-      {/* ========================================
-          INSTRUCTIONS FRAME
-          ======================================== */}
       
-      {/* Instructions panel on the front wall */}
-      <InstructionsFrame 
-        position={[-20, 4, 0.3]}     // On front wall, left side, eye level
-        rotation={[0, Math.PI, 0]}          // Facing into the room
-      />
     </>
   );
 }
