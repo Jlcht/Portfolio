@@ -47,11 +47,20 @@ export function OptimizedPhotoFrames({ frames }) {
       
       // Create transformation matrix
       const matrix = new THREE.Matrix4();
-      matrix.makeRotationFromEuler(new THREE.Euler(...rotation));
+      const euler = new THREE.Euler(...rotation);
+      const quaternion = new THREE.Quaternion().setFromEuler(euler);
+      
+      // Calculate offset in local space (before rotation)
+      const localOffset = new THREE.Vector3(0, 0, -0.03);
+      // Rotate the offset
+      localOffset.applyQuaternion(quaternion);
+      
+      // Set rotation and position
+      matrix.makeRotationFromQuaternion(quaternion);
       matrix.setPosition(
-        position[0],
-        position[1],
-        position[2] - 0.03
+        position[0] + localOffset.x,
+        position[1] + localOffset.y,
+        position[2] + localOffset.z
       );
       
       // Apply transformation
@@ -77,7 +86,11 @@ export function OptimizedPhotoFrames({ frames }) {
       );
       
       const matrix = new THREE.Matrix4();
-      matrix.makeRotationFromEuler(new THREE.Euler(...rotation));
+      const euler = new THREE.Euler(...rotation);
+      const quaternion = new THREE.Quaternion().setFromEuler(euler);
+      
+      // Inner frame has no offset, just rotation
+      matrix.makeRotationFromQuaternion(quaternion);
       matrix.setPosition(
         position[0],
         position[1],
@@ -107,10 +120,20 @@ export function OptimizedPhotoFrames({ frames }) {
       {frames.map((frame, index) => {
         const { position, rotation = [0, 0, 0], size = [4, 4] } = frame;
         
+        // Calculate the offset in the rotated coordinate system
+        const euler = new THREE.Euler(...rotation);
+        const quaternion = new THREE.Quaternion().setFromEuler(euler);
+        const localOffset = new THREE.Vector3(0, 0, 0.06);
+        localOffset.applyQuaternion(quaternion);
+        
         return (
           <mesh
             key={index}
-            position={[position[0], position[1], position[2] + 0.06]}
+            position={[
+              position[0] + localOffset.x,
+              position[1] + localOffset.y,
+              position[2] + localOffset.z
+            ]}
             rotation={rotation}
             receiveShadow
           >

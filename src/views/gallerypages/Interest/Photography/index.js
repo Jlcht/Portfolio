@@ -5,6 +5,7 @@
 import React, { Suspense, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Physics } from '@react-three/cannon';
+import { useProgress } from '@react-three/drei';
 
 // Import components
 import { Player } from './components/Player';
@@ -13,6 +14,39 @@ import { PointerLockControls } from './components/PointerLockControls';
 
 // Import keyboard utilities
 import { handleKeyDown, handleKeyUp } from './utils/keyboard';
+
+function Loader() {
+  const { progress } = useProgress();
+  return (
+    <div style={{
+      color: 'white',
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      textAlign: 'center',
+      zIndex: 1000
+    }}>
+      <div style={{ marginBottom: '1rem', fontSize: '1.2rem' }}>
+        Loading Photo Gallery... {progress.toFixed(0)}%
+      </div>
+      <div style={{
+        width: '300px',
+        height: '4px',
+        background: '#333',
+        borderRadius: '2px',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          width: `${progress}%`,
+          height: '100%',
+          background: 'white',
+          transition: 'width 0.2s ease'
+        }} />
+      </div>
+    </div>
+  );
+}
 
 export default function Photography() {
   // ========================================
@@ -46,25 +80,15 @@ export default function Photography() {
       background: '#111'   // Dark background color
     }}>
       
-      {/* Suspense: Shows fallback while 3D content loads */}
-      <Suspense fallback={
-        <div style={{
-          color:'white', 
-          position:'fixed', 
-          top:50, 
-          left:'50%', 
-          transform:'translateX(-50%)'  // Center horizontally
-        }}>
-          Loading Photo Gallery...
-        </div>
-      }>
+      {/* Suspense: Shows fallback with progress bar while 3D content loads */}
+      <Suspense fallback={<Loader />}>
         
         {/* Canvas: Container for all 3D content */}
         <Canvas 
           shadows  // Enable shadow rendering
           camera={{ 
-            position: [-20, 3, -10],  // Starting position: matches Player physics body
-            rotation: [0, Math.PI, 0],
+            position: [-30, 3, 0],  // Starting position: matches Player physics body
+            rotation: [0, -Math.PI/8 - Math.PI/8, 0],
             fov: 75                   // Field of view in degrees (wider = more visible)
           }}
         >

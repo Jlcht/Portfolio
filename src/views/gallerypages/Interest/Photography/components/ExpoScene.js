@@ -5,10 +5,10 @@
 import React from 'react';
 import { PhysicsWall } from './PhysicsWall';
 import { PhysicsFloor } from './PhysicsFloor';
-import { PhotoFrame } from './PhotoFrame';
+import { OptimizedPhotoFrames } from './OptimizedPhotoFrame';
 import { TargetedSpotlight } from './TargetedSpotlight';
 import { InstructionsFrame } from './InstructionsFrame';
-import { images } from '../constants/images';
+import { photoFramesData } from '../constants/photoFramesData';
 
 export function ExpoScene() {
   return (
@@ -219,16 +219,16 @@ export function ExpoScene() {
       />
       
       {/* ========================================
-          PHOTO FRAMES (No physics)
+          PHOTO FRAMES (Optimized - Merged Geometry)
           ======================================== */}
       
-      {/* Photo frames are just visual elements, no collision needed */}
+      {/* All 40 photo frames rendered with merged geometries for better performance
+          - Outer frames (black borders): 1 merged mesh
+          - Inner frames (cream mats): 1 merged mesh  
+          - Photo planes: 40 separate meshes (different textures)
+          Total: 42 draw calls instead of 120 (~65% reduction) */}
+      <OptimizedPhotoFrames frames={photoFramesData} />
       
-      <PhotoFrame 
-        position={[-27, 4, -29.8]}             
-        imageSrc={images.malta} 
-        size={[3, 4]}
-      />
 
       {/* Spotlight for Barcelona photo */}
       <TargetedSpotlight 
@@ -243,11 +243,6 @@ export function ExpoScene() {
       />
 
 
-      <PhotoFrame 
-        position={[-22, 4, -29.8]}             
-        imageSrc={images.malta_2} 
-        size={[3, 4]}
-      />
 
       {/* Spotlight for Barcelona photo */}
       <TargetedSpotlight 
@@ -261,12 +256,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />
       
-      <PhotoFrame 
-        position={[-10, 4, -29.8]}             
-        rotation={[0, 0, 0]}
-        imageSrc={images.palms_angel} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-10, 15, -25]}      
@@ -279,11 +268,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />
 
-      <PhotoFrame 
-        position={[-4, 4, -29.8]}              
-        imageSrc={images.palms_angel_2} 
-        size={[3, 4]}
-      />
       <TargetedSpotlight 
         position={[-4, 15, -25]}      
         targetPosition={[-4, 4, -29.8]}
@@ -295,12 +279,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />
       
-      <PhotoFrame 
-        position={[-0.2, 4, -4]}             
-        rotation={[0, -Math.PI / 2, 0]}
-        imageSrc={images.long_beach} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-6, 15, -4]}      
@@ -313,12 +291,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />
 
-      <PhotoFrame 
-        position={[-0.2, 4, -11]}     
-        rotation={[0, -Math.PI / 2, 0]}         
-        imageSrc={images.long_beach_2} 
-        size={[3, 4]}
-      />
       <TargetedSpotlight 
         position={[-6, 15, -11]}      
         targetPosition={[-0.2, 4, -11]}
@@ -331,12 +303,6 @@ export function ExpoScene() {
       />
       
 
-      <PhotoFrame 
-        position={[-0.2, 4, -24]}             
-        rotation={[0, -Math.PI / 2, 0]}
-        imageSrc={images.long_beach_3} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-6, 15, -24]}      
@@ -349,12 +315,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />
 
-      <PhotoFrame 
-        position={[6, 4, -0.2]}             
-        rotation={[0, Math.PI, 0]}
-        imageSrc={images.los_angeles} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[6, 15, -6]}      
@@ -367,12 +327,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />
 
-      <PhotoFrame 
-        position={[15, 4, -0.2]}             
-        rotation={[0, Math.PI, 0]}
-        imageSrc={images.los_angeles_2} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[15, 15, -6]}      
@@ -385,12 +339,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />
 
-      <PhotoFrame 
-        position={[25, 4, -0.2]}             
-        rotation={[0, Math.PI, 0]}
-        imageSrc={images.los_angeles_3} 
-        size={[4, 3]}
-      />
       
       <TargetedSpotlight 
         position={[25, 15, -6]}      
@@ -403,12 +351,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />
 
-      <PhotoFrame 
-        position={[7, 4, -29.8]}             
-        rotation={[0, 0, 0]}
-        imageSrc={images.bucarest} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[7, 15, -25]}      
@@ -421,12 +363,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />
 
-      <PhotoFrame 
-        position={[24, 4, -29.8]}             
-        rotation={[0, 0, 0]}
-        imageSrc={images.bucarest_2} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[24, 15, -25]}      
@@ -439,12 +375,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />
 
-      <PhotoFrame 
-        position={[29.8, 4, -20]}             
-        rotation={[0, -Math.PI/2, 0]}
-        imageSrc={images.bucarest_3} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[25, 15, -20]}      
@@ -457,12 +387,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />
 
-      <PhotoFrame 
-        position={[29.8, 4, -10]}             
-        rotation={[0, -Math.PI/2, 0]}
-        imageSrc={images.bucarest_4} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[25, 15, -10]}      
@@ -475,12 +399,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[6, 4, -59.8]}             
-        rotation={[0, 0, 0]}
-        imageSrc={images.istanbul} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[6, 15, -55]}      
@@ -493,12 +411,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[16, 4, -59.8]}             
-        rotation={[0, 0, 0]}
-        imageSrc={images.istanbul_4} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[16, 15, -55]}      
@@ -511,12 +423,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[25, 4, -59.8]}             
-        rotation={[0, 0, 0]}
-        imageSrc={images.istanbul_3} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[25, 15, -55]}      
@@ -529,12 +435,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[29.8, 4, -54]}             
-        rotation={[0, -Math.PI/2, 0]}
-        imageSrc={images.istanbul_2} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[25, 15, -54]}      
@@ -547,12 +447,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[29.8, 4, -45]}             
-        rotation={[0, -Math.PI/2, 0]}
-        imageSrc={images.istanbul_7} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[25, 15, -45]}      
@@ -565,12 +459,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[29.8, 4, -36]}             
-        rotation={[0, -Math.PI/2, 0]}
-        imageSrc={images.istanbul_6} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[25, 15, -36]}      
@@ -583,12 +471,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[0.2, 4, -52]}             
-        rotation={[0, Math.PI/2, 0]}
-        imageSrc={images.istanbul_9} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[6, 15, -52]}      
@@ -601,12 +483,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[0.2, 4, -35]}             
-        rotation={[0, Math.PI/2, 0]}
-        imageSrc={images.istanbul_8} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[6, 15, -35]}      
@@ -619,12 +495,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[10, 4, -30.2]}             
-        rotation={[0, Math.PI, 0]}
-        imageSrc={images.istanbul_5} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[10, 15, -35]}      
@@ -637,12 +507,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[25, 4, -30.2]}             
-        rotation={[0, Math.PI, 0]}
-        imageSrc={images.istanbul_10} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[25, 15, -35]}      
@@ -655,12 +519,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[-24, 4, -59.8]}             
-        rotation={[0, 0, 0]}
-        imageSrc={images.budapest} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-24, 15, -55]}      
@@ -673,12 +531,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[-15, 4, -59.8]}             
-        rotation={[0, 0, 0]}
-        imageSrc={images.budapest_2} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-15, 15, -55]}      
@@ -691,12 +543,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[-6, 4, -59.8]}             
-        rotation={[0, 0, 0]}
-        imageSrc={images.budapest_4} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-6, 15, -55]}      
@@ -709,12 +555,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[-29.8, 4, -54]}             
-        rotation={[0, Math.PI/2, 0]}
-        imageSrc={images.budapest_7} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-25, 15, -54]}      
@@ -727,12 +567,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[-29.8, 4, -45]}             
-        rotation={[0, Math.PI/2, 0]}
-        imageSrc={images.budapest_5} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-25, 15, -45]}      
@@ -745,12 +579,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[-29.8, 4, -36]}             
-        rotation={[0, Math.PI/2, 0]}
-        imageSrc={images.budapest_10} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-25, 15, -36]}      
@@ -763,12 +591,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[-7, 4, -30.2]}             
-        rotation={[0, Math.PI, 0]}
-        imageSrc={images.budapest_3} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-7, 15, -36]}      
@@ -781,12 +603,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[-24, 4, -30.2]}             
-        rotation={[0, Math.PI, 0]}
-        imageSrc={images.budapest_6} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-24, 15, -36]}      
@@ -799,12 +615,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[-0.2, 4, -50]}             
-        rotation={[0, -Math.PI/2, 0]}
-        imageSrc={images.budapest_9} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-6, 15, -50]}      
@@ -817,12 +627,6 @@ export function ExpoScene() {
         castShadow={false}                // Limit range to prevent bleeding through walls
       />  
 
-      <PhotoFrame 
-        position={[-0.2, 4, -35]}             
-        rotation={[0, -Math.PI/2, 0]}
-        imageSrc={images.budapest_8} 
-        size={[3, 4]}
-      />
       
       <TargetedSpotlight 
         position={[-6, 15, -35]}      
