@@ -2,10 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import './InterestGallery.css';
+import './CameraCard.css';
+import './TravelCard.css';
 import Header from '../Header';
 import Footer from '../../components/Footer';
 import FloatingContactButton from '../../components/FloatingContactButton';
 import boxingGlovesImg from '../../assets/images/boxing_gloves.jpg';
+import photoGalleryPreview from '../../assets/images/photo_gallery_preview.png';
 
 const InterestGallery = () => {
   const navigate = useNavigate();
@@ -109,7 +112,7 @@ const InterestGallery = () => {
             {interests.map((interest, index) => (
               <div 
                 key={interest.id}
-                className={`interest-card ${interest.title === 'Boxing' ? 'vintage-card' : ''} ${interest.title === 'Travel' ? 'travel-card' : ''}`}
+                className={`interest-card ${interest.title === 'Boxing' ? 'vintage-card' : ''} ${interest.title === 'Travel' ? 'travel-card' : ''} ${interest.title === 'Photography' ? 'camera-card' : ''}`}
                 onClick={() => navigate(interest.path)}
                 style={{ 
                   '--card-color': interest.color,
@@ -130,7 +133,6 @@ const InterestGallery = () => {
                     onMouseEnter={handleTravelCardEnter}
                     onMouseLeave={handleTravelCardLeave}
                   >
-                    <div className="interest-card-glow"></div>
                     
                     {/* Ocean island pattern background */}
                     <div className="travel-ocean-backdrop">
@@ -151,9 +153,114 @@ const InterestGallery = () => {
                       </div>
                     </div>
                   </motion.div>
+                ) : interest.title === 'Photography' ? (
+                  <div className="interest-card-inner camera-interface">
+                    {/* Camera viewfinder */}
+                    <div className="camera-viewfinder">
+                      {/* Top status bar */}
+                      <div className="camera-status-bar">
+                        <div className="status-left">
+                          <span className="status-icon">⚡</span>
+                          <span className="status-icon">⏱️</span>
+                          <span className="status-icon">Canon IXUS 115</span>
+                        </div>
+                        <div className="status-right">
+                          <span className="status-icon">🎤</span>
+                        </div>
+                      </div>
+
+                      {/* Left sidebar */}
+                      <div className="camera-sidebar-left">
+                        <div className="sidebar-icon">4K UHD</div>
+                        <div className="sidebar-icon">RAW + JPEG</div>
+                        <div className="sidebar-icon">📁</div>
+                        <div className="sidebar-icon">⚙️ Settings</div>
+                      </div>
+
+                      {/* Main viewfinder area with grid */}
+                      <div className="viewfinder-main" style={{
+                        backgroundImage: `url(${photoGalleryPreview})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                      }}>
+                        {/* Shutter Effect Overlay */}
+                        <div className="shutter-flash"></div>
+
+                        {/* Title overlay */}
+                        <div className="viewfinder-title-overlay">
+                          <h3>Explore the photo gallery</h3>
+                        </div>
+
+                        {/* Grid lines */}
+                        <div className="grid-overlay">
+                          <div className="grid-line-v grid-v1"></div>
+                          <div className="grid-line-v grid-v2"></div>
+                          <div className="grid-line-h grid-h1"></div>
+                          <div className="grid-line-h grid-h2"></div>
+                        </div>
+
+                        {/* Focus frame with dashed border */}
+                        <div className="focus-frame-dashed">
+                          <div className="focus-bracket-solid focus-tl"></div>
+                          <div className="focus-bracket-solid focus-tr"></div>
+                          <div className="focus-bracket-solid focus-bl"></div>
+                          <div className="focus-bracket-solid focus-br"></div>
+                          
+                          {/* Focus points */}
+                          <div className="focus-point focus-point-top"></div>
+                          <div className="focus-point focus-point-left"></div>
+                          <div className="focus-point focus-point-right"></div>
+                          <div className="focus-point focus-point-bottom"></div>
+                          
+                          {/* Center crosshair */}
+                          <div className="focus-crosshair">
+                            <div className="crosshair-h"></div>
+                            <div className="crosshair-v"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Right sidebar */}
+                      <div className="camera-sidebar-right">
+                        <div style={{fontSize: '0.5rem', writingMode: 'vertical-rl', fontWeight: 700, letterSpacing: '1px'}}>
+                          2026-07-27 10:58:46
+                        </div>
+                        <div style={{fontSize: '0.5rem', writingMode: 'vertical-rl', fontWeight: 700, letterSpacing: '1px'}}>
+                          1/4000s
+                        </div>
+                        <div style={{fontSize: '0.5rem', writingMode: 'vertical-rl', fontWeight: 700, letterSpacing: '1px'}}>
+                          f.1.4
+                        </div>
+                        <div style={{fontSize: '0.5rem', writingMode: 'vertical-rl', fontWeight: 700, letterSpacing: '1px'}}>
+                          ISO 100
+                        </div>
+                        <span className="status-icon">👁️</span>
+                        <span className="status-icon">📶</span>
+                        <span className="status-badge">M</span>
+                      </div>
+
+                      {/* Bottom toolbar */}
+                      <div className="camera-toolbar">
+                        <div className="toolbar-item">DAYLIGHT</div>
+                        <div className="white-balance">
+                          <div className="wb-circle"></div>
+                        </div>
+                        <span className="rec-badge">REC</span>
+                        <div className="exposure-slider">
+                          <span className="exposure-value">0</span>
+                          <div className="slider-track">
+                            <div className="slider-marker"></div>
+                          </div>
+                        </div>
+                        <div className="record-button">
+                          <div className="record-inner"></div>
+                        </div>
+                        <span className="status-badge">M</span>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <div className="interest-card-inner">
-                    <div className="interest-card-glow"></div>
                       <div className="interest-card-header">
                         <div className="interest-emoji">{interest.emoji}</div>
                         <h2 className="interest-title">{interest.title}</h2>
@@ -189,8 +296,6 @@ const InterestGallery = () => {
                   </div>
                 )}
 
-
-                <div className="interest-card-border"></div>
               </div>
             ))}
           </div>
