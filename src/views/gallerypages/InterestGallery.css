@@ -81,7 +81,6 @@
 
 .interest-card:hover .interest-card-inner {
   transform: translateY(-5px);
-  border-color: var(--card-color);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -230,6 +229,7 @@
 /* Newspaper Masthead Style Header */
 .vintage-card .interest-card-header {
   border-bottom: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
@@ -291,23 +291,7 @@
   margin-top: 8px;
 }
 
-.vintage-card .interest-description {
-  font-family: Georgia, serif;
-  color: #2c1810;
-  font-style: normal;
-  text-align: center;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  margin: 12px 0;
-  padding: 0 8px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border-top: 1px solid #2c1810;
-  border-bottom: 1px solid #2c1810;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
+
 
 /* Vintage image container for Boxing card */
 .vintage-card .interest-image-container {
@@ -383,6 +367,7 @@
   margin-top: auto;
   padding-top: 12px;
   border-top: 2px solid #2c1810;
+  display: flex;
   justify-content: center;
   background: rgba(44, 24, 16, 0.05);
   padding: 15px 10px; 
@@ -408,107 +393,7 @@
 
 
 
-/* Card Header */
-.interest-card-header {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #f0f0f0;
-}
 
-.interest-emoji {
-  font-size: 3.5rem;
-  line-height: 1;
-  transition: transform 0.3s ease;
-}
-
-.interest-card:hover .interest-emoji {
-  transform: scale(1.1);
-}
-
-.interest-title {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #000;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Description */
-.interest-description {
-  font-size: 1rem;
-  color: #333;
-  line-height: 1.7;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  flex-grow: 1;
-  font-weight: 400;
-}
-
-/* Stats */
-.interest-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 20px 0;
-  border-top: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.interest-stat-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.95rem;
-  color: #666;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  transition: all 0.3s ease;
-}
-
-.interest-card:hover .interest-stat-item {
-  color: #333;
-  transform: translateX(5px);
-}
-
-.stat-dot {
-  font-size: 1.2rem;
-  color: var(--card-color);
-}
-
-.stat-text {
-  font-size: 0.95rem;
-}
-
-/* Card Footer */
-.interest-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-  padding-top: 10px;
-}
-
-.explore-text {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--card-color);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.arrow-icon {
-  font-size: 1.5rem;
-  color: var(--card-color);
-  transition: transform 0.3s ease;
-}
-
-.interest-card:hover .arrow-icon {
-  transform: translateX(10px);
-}
 
 
 
@@ -524,7 +409,7 @@
 
   .interests-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 90px;
   }
 }
 
@@ -544,26 +429,37 @@
 
   .interests-grid {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 80px; /* Increased space between cards */
   }
 
-  .interest-card-inner {
-    padding: 30px 25px;
+  /* Reset Vintage Card for Mobile - Single Card Look */
+  .vintage-card {
+    transform: none !important;
   }
 
-  .interest-emoji {
-    font-size: 3rem;
+  .vintage-card:hover {
+    transform: translateY(-5px) !important;
   }
 
-  .interest-title {
-    font-size: 1.5rem;
+  .vintage-card::before,
+  .vintage-card::after {
+    display: none !important;
   }
 
-  .interest-description {
-    font-size: 0.95rem;
+  .vintage-card .interest-card-inner {
+    box-shadow: 
+      0 0 0 1px #2c1810,
+      0 0 0 2px #e8d7b8,
+      0 4px 10px rgba(0, 0, 0, 0.1) !important;
   }
 
-
+  .vintage-card:hover .interest-card-inner {
+    transform: none !important;
+    box-shadow: 
+      0 0 0 1px #2c1810,
+      0 0 0 2px #e8d7b8,
+      0 8px 20px rgba(0, 0, 0, 0.15) !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -578,20 +474,4 @@
   .interest-gallery-subtitle {
     font-size: 0.95rem;
   }
-
-  .interest-card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  .interest-emoji {
-    font-size: 2.5rem;
-  }
-
-  .interest-title {
-    font-size: 1.3rem;
-  }
-
-
 }

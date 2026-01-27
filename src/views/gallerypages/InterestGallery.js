@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import './InterestGallery.css';
@@ -22,36 +22,24 @@ const InterestGallery = () => {
       emoji: '⚜',
       description: 'The Greatest of All Time',
       image: boxingGlovesImg,
-      color: '#e74c3c',
-      gradient: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
       path: '/interests/boxing',
       stats: ['2+ Years', 'Muay Thai', 'Boxing']
     },
     {
       id: 2,
       title: 'Travel',
-      emoji: '✈️',
-      description: 'Exploring the world, discovering new cultures and creating memories',
-      color: '#3498db',
-      gradient: 'linear-gradient(135deg, #3498db 0%, #2980b9 100%)',
       path: '/interests/travel',
-      stats: ['3 Countries', '6 Cities', '1000+ Photos']
     },
     {
       id: 3,
       title: 'Photography',
-      emoji: '📸',
-      description: 'Capturing moments and telling stories through the lens',
-      color: '#9b59b6',
-      gradient: 'linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%)',
       path: '/interests/photography',
-      stats: ['5000+ Photos', 'Street Genre', '3+ Years']
     }
   ];
 
   // Tilt effect for Travel card
   const travelCardRef = useRef(null);
-  const [lastY, setLastY] = useState(0);
+
   
   const springValues = {
     damping: 30,
@@ -59,8 +47,6 @@ const InterestGallery = () => {
     mass: 2
   };
 
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
   const rotateX = useSpring(useMotionValue(0), springValues);
   const rotateY = useSpring(useMotionValue(0), springValues);
   const scale = useSpring(1, springValues);
@@ -78,11 +64,8 @@ const InterestGallery = () => {
     rotateX.set(rotationX);
     rotateY.set(rotationY);
 
-    x.set(e.clientX - rect.left);
-    y.set(e.clientY - rect.top);
 
-    const velocityY = offsetY - lastY;
-    setLastY(offsetY);
+
   }
 
   function handleTravelCardEnter() {

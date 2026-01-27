@@ -495,8 +495,9 @@
   border-radius: 50%;
 }
 
-.record-button:hover {
-  transform: scale(1.05);
+.camera-card:hover .record-button {
+  transform: scale(0.95);
+  transition: transform 0.2s ease-in-out;
 }
 
 /* M badge */
