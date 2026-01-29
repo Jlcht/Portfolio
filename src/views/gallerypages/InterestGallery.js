@@ -87,7 +87,7 @@ const InterestGallery = () => {
           <div className="interest-gallery-header">
             <h1 className="interest-gallery-main-title">My Passions & Interests</h1>
             <p className="interest-gallery-subtitle">
-              Explore the activities and hobbies that define who I am. Click on any card to dive deeper into each passion.
+              Explore the different cards to learn more about my passions and interests.
             </p>
           </div>
 

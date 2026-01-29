@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Gallery.css';
-import codeImage from '../assets/images/code_illu.jpg';
-import jsImage from '../assets/images/js_illu.jpg';
+import interestImage from '../assets/images/interest_illu.png';
+import proImage from '../assets/images/pro_illu.png';
 import utbmLogo from '../assets/images/utbm_logo.jpg';
 
 const Gallery = () => {
@@ -16,7 +16,7 @@ const Gallery = () => {
       id: 1, 
       category: 'PROFESSIONAL EXPERIENCE', 
       title: 'Professional Journey', 
-      image: codeImage, 
+      image: proImage, 
       alt: 'Code illustration',
       path: '/professional-experience'
     },
@@ -31,9 +31,9 @@ const Gallery = () => {
     { 
       id: 3, 
       category: 'INTEREST', 
-      title: 'Passions & Hobbies', 
-      image: jsImage, 
-      alt: 'JavaScript illustration',
+      title: 'Passions & Interests', 
+      image: interestImage, 
+      alt: 'Programming illustration',
       path: '/interests'
     },
   ];
@@ -72,8 +72,13 @@ const Gallery = () => {
           <div
             key={card.id}
             ref={el => cardRefs.current[index] = el}
-            className={`gallery-card ${cardIsVisible[index] ? 'visible' : ''} ${hoveredCard === card.id ? 'hovered' : ''}`}
-            style={{ animationDelay: `${index * 0.3}s` }}
+            className={`gallery-card card-${card.id} ${cardIsVisible[index] ? 'visible' : ''} ${hoveredCard === card.id ? 'hovered' : ''}`}
+            style={{ 
+              animationDelay: `${index * 0.3}s`,
+              ...(card.id === 3 ? { 
+                '--card-bg-image': `url(${card.image})`
+              } : {})
+            }}
             onMouseEnter={() => setHoveredCard(card.id)}
             onMouseLeave={() => setHoveredCard(null)}
             onClick={() => handleCardClick(card.path)}

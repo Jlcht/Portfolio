@@ -134,3 +134,78 @@
 @media (max-width: 576px) {
   .gallery-container { grid-template-columns: 1fr; gap: 20px; }
 }
+
+/* Custom styles for Professional Experience Card (Card 1) */
+
+.gallery-card.card-1 .card-image-wrapper {
+  padding: 0;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.gallery-card.card-1 .card-image {
+  height: 280px;
+  width: 100%;
+  object-fit: contain;
+  transform: scale(1.1);
+}
+
+.gallery-card.card-1.hovered .card-image {
+  transform: scale(1.15);
+}
+
+/* Custom styles for Interest Card (Card 3) */
+.gallery-card.card-3 {
+  position: relative;
+  border: none; /* enhanced look without border */
+}
+
+
+
+/* Background image on ::after to allow zoom effect */
+.gallery-card.card-3::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: var(--card-bg-image);
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  transition: transform 0.6s ease; /* Smooth zoom transition */
+}
+
+/* Zoom effect on hover */
+.gallery-card.card-3:hover::after {
+  transform: scale(1.1);
+}
+
+.gallery-card.card-3 .card-image-wrapper {
+  display: none; /* Hide the foreground image */
+}
+
+.gallery-card.card-3 .card-content {
+  position: relative;
+  z-index: 2; /* Place content above overlay */
+  justify-content: center; /* Center content vertically */
+  color: white;
+}
+
+.gallery-card.card-3 .card-title,
+.gallery-card.card-3 .card-category {
+  color: #000000;
+  position: absolute; /* Allows manual positioning */
+  width: 100%; /* Ensures text centering works if needed */
+  left: 0;
+}
+
+.gallery-card.card-3 .card-title {
+  top: 17%; /* Center vertically by default */
+  transform: translateY(-50%);
+}
+
+.gallery-card.card-3 .card-category {
+  top: 60px; /* Position at the top */
+}
