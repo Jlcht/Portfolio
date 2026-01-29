@@ -13,6 +13,7 @@ A modern, immersive portfolio website built with React and advanced 3D web techn
 - **Map/Globe**: React Globe GL
 - **Styling**: CSS3, FontAwesome
 - **Deployment**: Firebase Hosting
+- **Mailing**: Mail.js for mailing from the website
 
 ## ✨ Features
 
