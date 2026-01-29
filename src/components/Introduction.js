@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Introduction.css';
 
 const Introduction = () => {
-  const roles = ['a student', 'an engineer', 'a french person', 'a creator'];
+  const roles = ['a student', 'an engineer', 'from France', 'a creator'];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
