@@ -11,6 +11,28 @@ const ProfessionalExperience = () => {
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    const experienceEntries = document.querySelectorAll('.experience-entry');
+    experienceEntries.forEach(entry => observer.observe(entry));
+
+    return () => {
+      experienceEntries.forEach(entry => observer.unobserve(entry));
+    };
+  }, []);
+
   const experiences = [
     {
       id: 1,
@@ -46,8 +68,8 @@ const ProfessionalExperience = () => {
           </div>
           <div className="professional-experience-right">
             <div className="professional-experience-content">
-              {experiences.map((experience) => (
-                <div key={experience.id} className="experience-entry">
+              {experiences.map((experience, index) => (
+                <div key={experience.id} className="experience-entry" data-index={index}>
                   <div className="experience-date-column">
                     <p className="experience-date">{experience.dateRange}</p>
                     {experience.logo && (

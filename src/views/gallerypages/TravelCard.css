@@ -1,0 +1,279 @@
+/* ===== TRAVEL CARD - OCEAN ISLAND PATTERN WITH 3D EFFECT ===== */
+
+.travel-card {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.travel-card .interest-card-inner {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ocean backdrop */
+.travel-ocean-backdrop {
+  --ocean-deep: #0b3a57;
+  --ocean: #0f4e72;
+  --shallow: #3ec7cf;
+  --foam: #ffffffcc;
+  --sand: #f6e7b4;
+  --dune: #ecd899;
+  --land: #93c66b;
+  --land-dark: #79ab4f;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--ocean) 75%, var(--ocean-deep) 100%);
+  background-repeat: no-repeat;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Island backdrop with pattern */
+.travel-island-backdrop {
+  filter: url(#handDrawnNoise);
+  --ocean-deep: #194f71;
+  --ocean: #216a94;
+  --shallow: #3ec8cfb1;
+  --foam: #ffffffa3;
+  --sand: #f6e7b4;
+  --dune: #ecd899;
+  --land: #93c66b;
+  --land-dark: #79ab4f;
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      ellipse 8vmin 10vmin at 20% 25%,
+      var(--land-dark, #2a3d26) 0 70%,
+      transparent 71%
+    ),
+    /* Land */
+    radial-gradient(
+      ellipse 16vmin 12vmin at 20% 25%,
+      var(--land, #3d5c38) 0 70%,
+      transparent 71%
+    ),
+    /* Sand */
+    radial-gradient(
+      ellipse 18vmin 14vmin at 20% 25%,
+      var(--dune, #d2b48c) 0 70%,
+      transparent 71%
+    ),
+    radial-gradient(
+      ellipse 20vmin 16vmin at 20% 25%,
+      var(--sand, #f2e2b2) 0 70%,
+      transparent 71%
+    ),
+    /* Foam */
+    radial-gradient(
+      ellipse 22vmin 18vmin at 20% 25%,
+      var(--foam, #ffffff88) 0 70%,
+      transparent 71%
+    ),
+    /* Shallow water */
+    radial-gradient(
+      ellipse 24vmin 20vmin at 20% 25%,
+      var(--shallowwater, #4ca3af) 0 70%,
+      transparent 71%
+    ),
+    /* ==== Island 2 ==== */
+    radial-gradient(
+      ellipse 6vmin 11vmin at 75% 30%,
+      var(--land-dark, #2a3d26) 0 70%,
+      transparent 71%
+    ),
+    radial-gradient(
+      ellipse 17vmin 13vmin at 75% 30%,
+      var(--land, #3d5c38) 0 70%,
+      transparent 71%
+    ),
+    radial-gradient(
+      ellipse 19vmin 15vmin at 75% 30%,
+      var(--dune, #d2b48c) 0 70%,
+      transparent 71%
+    ),
+    radial-gradient(
+      ellipse 21vmin 17vmin at 75% 30%,
+      var(--sand, #f2e2b2) 0 70%,
+      transparent 71%
+    ),
+    radial-gradient(
+      ellipse 23vmin 19vmin at 75% 30%,
+      var(--foam, #ffffff88) 0 70%,
+      transparent 71%
+    ),
+    radial-gradient(
+      ellipse 25vmin 21vmin at 75% 30%,
+      var(--shallowwater, #4ca3af) 0 70%,
+      transparent 71%
+    ),
+    /* ====== Island 3 ====== */
+    radial-gradient(
+      ellipse 6vmin 10vmin at 50% 75%,
+      var(--land-dark, #2a3d26) 0 70%,
+      transparent 71%
+    ),
+    radial-gradient(
+      ellipse 15vmin 12vmin at 50% 75%,
+      var(--land, #3d5c38) 0 70%,
+      transparent 71%
+    ),
+    radial-gradient(
+      ellipse 17vmin 14vmin at 50% 75%,
+      var(--dune, #d2b48c) 0 70%,
+      transparent 71%
+    ),
+    radial-gradient(
+      ellipse 19vmin 16vmin at 50% 75%,
+      var(--sand, #f2e2b2) 0 70%,
+      transparent 71%
+    ),
+    radial-gradient(
+      ellipse 21vmin 18vmin at 50% 75%,
+      var(--foam, #ffffff88) 0 70%,
+      transparent 71%
+    ),
+    radial-gradient(
+      ellipse 23vmin 20vmin at 50% 75%,
+      var(--shallowwater, #4ca3af) 0 70%,
+      transparent 71%
+    ),
+    /* ======= Base ocean ======= */
+    linear-gradient(180deg, var(--ocean) 0%, var(--ocean-deep) 80%);
+  background-repeat: repeat;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* 3D hover effect */
+.travel-card:hover .interest-card-inner {
+  transform: 
+    perspective(1200px)
+    rotateX(8deg)
+    rotateY(-8deg)
+    translateZ(50px)
+    scale(1.03);
+  box-shadow: 
+    0 40px 80px rgba(15, 78, 114, 0.4),
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.travel-card:hover .travel-ocean-backdrop,
+.travel-card:hover .travel-island-backdrop {
+  transform: scale(1.05);
+}
+
+/* Travel content container */
+.travel-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  padding: 40px;
+  transform: translateZ(30px);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.travel-card:hover .travel-content {
+  transform: translateZ(80px);
+}
+
+/* Travel card title */
+.travel-card .interest-title {
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 900;
+  text-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.travel-card:hover .interest-title {
+  transform: scale(1.1);
+  text-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Travel card footer */
+.travel-card .interest-card-footer {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  padding: 15px 40px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.travel-card:hover .interest-card-footer {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.travel-card .explore-text {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+}
+
+.travel-card .arrow-icon {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.travel-card:hover .arrow-icon {
+  transform: translateX(8px);
+}
+
+/* Responsive adjustments for travel card */
+@media (max-width: 768px) {
+  .travel-card .interest-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  
+  .travel-content {
+    gap: 30px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .travel-card .interest-title {
+    font-size: 1.5rem;
+  }
+  
+  .travel-card .interest-card-footer {
+    padding: 12px 30px;
+  }
+  
+  .travel-card .explore-text {
+    font-size: 1rem;
+  }
+}
+
+/* ===== END TRAVEL CARD ===== */

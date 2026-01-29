@@ -1,14 +1,17 @@
 import React from 'react';
 import './Banner.css';
 
-const Banner = ({ text }) => {
-    const handleClick = () => {
-        window.open('https://github.com/Jlcht', '_blank');
-    };
-
+const Banner = () => {
+    const text = "I am currently looking for an internship for September 2026, if you have any opportunity or would like to collaborate with me, please feel free to hit me up !";
+    
     return (
-        <div className="banner" onClick={handleClick}>
-            <p className="banner-text">{text}</p>
+        <div className="scrolling-banner">
+            <div className="scrolling-banner-content">
+                <span className="scrolling-text">{text}</span>
+                <span className="scrolling-text">{text}</span>
+                <span className="scrolling-text">{text}</span>
+                <span className="scrolling-text">{text}</span>
+            </div>
         </div>
     );
 };

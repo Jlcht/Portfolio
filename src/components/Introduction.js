@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Introduction.css';
 
 const Introduction = () => {
-  const roles = ['student', 'engineer', 'french person', 'creator'];
+  const roles = ['a student', 'an engineer', 'a french person', 'a creator'];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -40,7 +40,7 @@ const Introduction = () => {
   return (
     <section className="introduction">
       <div className="introduction-container">
-        <h2 className="introduction-subtitle">HI, I'M JEAN-LUC AND I'M A</h2>
+        <h2 className="introduction-subtitle">HI, I'M JEAN-LUC AND I'M</h2>
         <h1 className="introduction-title">
           {displayedText}<span className="cursor"></span>
         </h1>
