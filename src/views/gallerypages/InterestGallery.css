@@ -1,6 +1,7 @@
 .interest-gallery-page {
   background: #f5f3ed;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .interest-gallery-section {
@@ -41,7 +42,7 @@
 /* Interests Grid */
 .interests-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
   grid-auto-rows: 600px; /* Fixed row height */
   align-items: stretch; /* Stretch all items to fill the row */
   gap: 40px;
@@ -328,7 +329,7 @@
   border-top: 2px solid #2c1810;
   border-bottom: 2px solid #2c1810;
   background: rgba(44, 24, 16, 0.03);
-  padding: 12px 150px;
+  padding: 12px 20%;
   margin: 12px 0;
   margin-bottom: -25px;
   display: flex;
@@ -415,7 +416,7 @@
 
 @media (max-width: 768px) {
   .interest-gallery-section {
-    padding: 40px 30px;
+    padding: 40px 20px;
   }
 
   .interest-gallery-main-title {
@@ -432,9 +433,15 @@
     gap: 80px; /* Increased space between cards */
   }
 
+  /* Extra breathing room between Travel and Photography cards */
+  .camera-card {
+    margin-top: 60px;
+  }
+
   /* Reset Vintage Card for Mobile - Single Card Look */
   .vintage-card {
     transform: none !important;
+    overflow: hidden; /* clip stacked-paper pseudos */
   }
 
   .vintage-card:hover {
@@ -444,6 +451,10 @@
   .vintage-card::before,
   .vintage-card::after {
     display: none !important;
+  }
+
+  .vintage-card .interest-stats {
+    padding: 12px 15px; /* flat padding on mobile instead of percentage */
   }
 
   .vintage-card .interest-card-inner {

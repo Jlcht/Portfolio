@@ -91,7 +91,7 @@ const Boxing = () => {
               <h3 className="article-headline">
                 MY PERSONAL JOURNEY INTO BOXING 
               </h3>
-              <div className="article-byline">By CHUMONT Jean-Luc </div>
+              <div className="article-byline">By CHUMONT Jean-Luc - 21/02/2026 </div>
               <div className="article-divider"></div>
 
               <p className="article-text">

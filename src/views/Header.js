@@ -59,7 +59,7 @@ const Header = () => {
                                 className="nav-btn"
                                 onClick={() => handleClick({ type: 'modal', modalId: 'video' })}
                             >
-                                About
+                                Reference
                             </button>
                         </li>
                         <li>

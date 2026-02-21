@@ -4,6 +4,10 @@ import './Gallery.css';
 import interestImage from '../assets/images/interest_illu.png';
 import proImage from '../assets/images/pro_illu.png';
 import utbmLogo from '../assets/images/utbm_logo.jpg';
+import Aurelian from '../assets/images/Aurelian-illu.png';
+import Portfolio from '../assets/images/Portfolio-illu.png';
+import Trio from '../assets/images/Trio_illu.png';
+import Teeko from '../assets/images/Teeko_illu.png';
 
 const Gallery = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -35,6 +39,38 @@ const Gallery = () => {
       image: interestImage, 
       alt: 'Programming illustration',
       path: '/interests'
+    },
+    {
+      id: 4,
+      category: 'PROJECT',
+      title: 'Aurelian  Timeworks',
+      image: Aurelian,
+      alt: 'Programming illustration',
+      path: 'https://github.com/Jlcht/Aurelian-Timeworks'
+    },
+    {
+      id: 5,
+      category: 'PROJECT',
+      title: 'This Portfolio',
+      image: Portfolio,
+      alt: 'Programming illustration',
+      path: 'https://github.com/Jlcht/Portfolio'
+    },
+    {
+      id: 6,
+      category: 'SCHOOL PROJECT',
+      title: 'Trio Game Menu',
+      image: Trio,
+      alt: 'Programming illustration',
+      path: 'https://github.com/Dridox-h/projet_ap4b'
+    },
+    {
+      id: 7,
+      category: 'SCHOOL PROJECT',
+      title: 'Teeko Game with Ai',
+      image: Teeko,
+      alt: 'Programming illustration',
+      path: 'https://github.com/Jlcht/Teeko'
     },
   ];
 

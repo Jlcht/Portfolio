@@ -28,6 +28,7 @@ const InteractiveGlobe = () => {
       description: 'Romanian capital - Palace of Parliament and my erasmus semester location at Politehnica University of Bucharest.',
       details: 'Stayed for 4 months in 2025',
       color: '#200138ff',
+      countryCode: 'ro',
       photo: bucharestPhoto
     },
     {
@@ -37,6 +38,7 @@ const InteractiveGlobe = () => {
       description: 'City of Joan of Arc',
       details: 'Its great, better than Belfort for sure.',
       color: '#ffffffff',
+      countryCode: 'fr',
       photo: null
     },
     {
@@ -46,6 +48,7 @@ const InteractiveGlobe = () => {
       description: 'Eastern France - famous for his Lion of Belfort, my study location at University of Technology of Belfort-Montbéliard.',
       details: 'Stayed for almost 5 years',
       color: '#000000ff',
+      countryCode: 'fr',
       photo: null
     },
     {
@@ -55,6 +58,7 @@ const InteractiveGlobe = () => {
       description: 'City across two continents - One of my most mind blowing and environment changing travel experience.',
       details: 'Went there in a 11h bus travel from Bucharest through Bulgaria.',
       color: '#4fb9efff',
+      countryCode: 'tr',
       photo: istanbulPhoto
     },
     {
@@ -64,6 +68,7 @@ const InteractiveGlobe = () => {
       description: 'Pearl of the Danube - Crazy beautiful city with those original "Ruin Bar".',
       details: 'Went there with my friends for a week, a must do in Europe.',
       color: '#efd269ff',
+      countryCode: 'hu',
       photo: budapestPhoto
     },
     {
@@ -73,6 +78,7 @@ const InteractiveGlobe = () => {
       description: 'Pacific Coast - A huge vietnamese community that made me feel like i was somewhere between Asia and America.',
       details: 'Unmatched vibes',
       color: '#74d2e2ff',
+      countryCode: 'us',
       photo: longBeachPhoto
     },
     {
@@ -82,6 +88,7 @@ const InteractiveGlobe = () => {
       description: 'City of Angels - Hollywood, what can i say more ?',
       details: 'GTA 5 map for sure',
       color: '#292bcfff',
+      countryCode: 'us',
       photo: losAngelesPhoto
     },
     {
@@ -91,6 +98,7 @@ const InteractiveGlobe = () => {
       description: 'British capital - A school trip where we stayed with a host family.',
       details: 'One of my most memorable trip due to the atmosphere with all my friends.',
       color: '#cae0ecff',
+      countryCode: 'gb',
       photo: londonPhoto
     },
     {
@@ -100,6 +108,7 @@ const InteractiveGlobe = () => {
       description: 'Catalan jewel - Sagrada Familia, i understand now why people fall in love with this city.',
       details: 'I could live there.',
       color: '#F8B739',
+      countryCode: 'es',
       photo: barcelonaPhoto
     },
     {
@@ -109,6 +118,7 @@ const InteractiveGlobe = () => {
       description: 'Mediterranean island - A pearl in the middle of the sea. Crazy island with even more crazy people.',
       details: 'Beautiful beaches and crystal clear water. But i got badly sick.',
       color: '#53f5dcff',
+      countryCode: 'mt',
       photo: maltaPhoto
     }
   ];
@@ -318,37 +328,102 @@ const InteractiveGlobe = () => {
         atmosphereColor={textureConfig.atmosphereColor}
         atmosphereAltitude={textureConfig.atmosphereAltitude}
         
-        // Location markers - interactive and clickable
-        pointsData={locations}
-        pointLat="lat"
-        pointLng="lng"
-        pointColor="color"
-        pointAltitude={0.02}
-        pointRadius={1.0}
-        
-        // Hover effect for better UX
-        onPointHover={(point) => {
-          if (point) {
+        // Flag pins - proper flag-on-pole shape
+        htmlElementsData={locations}
+        htmlElement={(d) => {
+          // THREE's CSS2DRenderer overwrites `transform` on the top-level element.
+          // Fix: use a zero-size outer shell so the renderer's -50%/-50% centering
+          // has no effect (50% of 0 = 0). Then shift the real content with
+          // position:relative left/top so the pole TIP sits exactly at 0,0 (the anchor).
+          //
+          // Content heights:
+          //   flagWrap : 13px + 1.5px border×2 = 16px
+          //   pole     : 18px
+          //   total    : 34px  → top = -34px puts the bottom at y=0 ✓
+          //   pole center at x=1px → left = -1px centers it on x=0 ✓
+          const shell = document.createElement('div');
+          shell.style.cssText = `
+            width: 0;
+            height: 0;
+            overflow: visible;
+            pointer-events: none;
+          `;
+
+          const inner = document.createElement('div');
+          inner.style.cssText = `
+            position: relative;
+            left: 0px;
+            top: -34px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            cursor: pointer;
+            pointer-events: all;
+          `;
+
+          // --- Flag rectangle (top of pole) ---
+          const flagWrap = document.createElement('div');
+          flagWrap.style.cssText = `
+            margin-left: 0px;
+            width: 20px;
+            height: 13px;
+            border: 1.5px solid rgba(255,255,255,0.85);
+            border-radius: 1px;
+            overflow: hidden;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.7);
+            transform-origin: bottom left;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+          `;
+          const img = document.createElement('img');
+          img.src = `https://flagcdn.com/w40/${d.countryCode}.png`;
+          img.alt = d.label;
+          img.style.cssText = `
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+          `;
+          flagWrap.appendChild(img);
+
+          // --- Pole (vertical bar, left-aligned under the flag) ---
+          const pole = document.createElement('div');
+          pole.style.cssText = `
+            width: 2px;
+            height: 15px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(180,180,180,0.6));
+            border-radius: 0 0 1px 1px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            flex-shrink: 0;
+          `;
+
+          inner.appendChild(flagWrap);
+          inner.appendChild(pole);
+          shell.appendChild(inner);
+
+          // Hover: scale the flag from its bottom-left (= pole top) origin
+          inner.addEventListener('mouseenter', () => {
+            flagWrap.style.transform = 'scale(1.25)';
+            flagWrap.style.boxShadow = '0 2px 10px rgba(0,0,0,0.9)';
             document.body.style.cursor = 'pointer';
-          } else {
+          });
+          inner.addEventListener('mouseleave', () => {
+            flagWrap.style.transform = 'scale(1)';
+            flagWrap.style.boxShadow = '0 1px 5px rgba(0,0,0,0.7)';
             document.body.style.cursor = 'auto';
-          }
-        }}
-        
-        // Enhanced click interaction with zoom and card display
-        onPointClick={(point) => {
-          if (point) {
-            setSelectedLocation(point);
-            // Zoom in close to the location
+          });
+          inner.addEventListener('click', () => {
+            setSelectedLocation(d);
             if (globeEl.current) {
               globeEl.current.pointOfView(
-                { lat: point.lat, lng: point.lng, altitude: 0.8 },
+                { lat: d.lat, lng: d.lng, altitude: 0.8 },
                 2000
               );
             }
-          }
+          });
+
+          return shell;
         }}
-        
+
         // Travel routes - solid arcs (no animation conflicts)
         arcsData={travelArcs}
         arcColor={(d) => d.color}
