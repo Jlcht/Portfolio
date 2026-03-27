@@ -9,7 +9,7 @@ import VideoModal from '../components/VideoModal';
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const videoUrl = 'https://www.youtube.com/embed/-tnPCI5RdNA';
-    const resumePdfUrl = '/CV_Jean-Luc_CHUMONT_EN.pdf'; // Place PDF in public folder
+    const resumePdfUrl = '/CV_Jean-Luc_CHUMONT_DOUBLE.pdf'; // Place PDF in public folder
 
     const handleClick = (action) => {
         switch (action.type) {
